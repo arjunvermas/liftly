@@ -38,7 +38,7 @@ const authController = require('../controllers/auth.controller')
  *               password:
  *                 type: string
  *                 format: password
- *                 example: SecurePass123!
+ *                 example: SecurePass@123!
  *                 minLength: 8
  *                 maxLength: 72
  *     responses:
@@ -136,7 +136,7 @@ const authController = require('../controllers/auth.controller')
  *               password:
  *                 type: string
  *                 format: password
- *                 example: SecurePass123!
+ *                 example: SecurePass@123!
  *     responses:
  *       200:
  *         description: Logged in successfully
