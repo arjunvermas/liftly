@@ -4,7 +4,7 @@ const { z } = require("zod");
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 dotenv.config();
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
 
 //used ZOD for filtering data
 const registerSchema = z.object({
@@ -24,6 +24,7 @@ const registerSchema = z.object({
       /^[a-z0-9_]+$/,
       "Username can only contain lowercase letters, numbers, and underscores"
     ),
+    
 
   email: z
     .string()
@@ -89,6 +90,37 @@ const loginSchema = z.object({
     .string()
     .min(1, "Password is required"),
 });
+const updateUserSchema = z
+  .object({
+    name: z
+      .string()
+      .max(100, "Name must not exceed 100 characters")
+      .optional()
+      .nullable(),
+
+    username: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .min(3, "Username must be at least 3 characters")
+      .max(30, "Username must not exceed 30 characters")
+      .regex(
+        /^[a-z0-9_]+$/,
+        "Username can only contain lowercase letters, numbers, and underscores"
+      )
+      .optional(),
+
+    email: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .max(255, "Email must not exceed 255 characters")
+      .email("Invalid email address")
+      .optional(),
+  })
+  .refine((data) => Object.keys(data).length > 0, {
+    message: "At least one user field must be provided to update",
+  });
 
 //register done
 async function createProfileRecord(profileData, username, userId) {
@@ -223,7 +255,7 @@ async function loginUser(req, res){
 
         const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
             expiresIn: "30d",
-            });
+        });
 
         res.cookie("token", token, {
             httpOnly: true,
@@ -243,9 +275,20 @@ async function loginUser(req, res){
     
 }
 
+
+//update user should be broken into two functions one for profile and one for user thats better
 async function updateUser(req, res){
-    
+
+    //needed but abhi man nai end mai
+
+
 }
+
+//updateProfile and update
+async function updateProfile(req, res){
+
+}
+
 module.exports = {
     registerUser,
     loginUser
