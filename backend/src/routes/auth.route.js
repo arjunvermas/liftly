@@ -7,7 +7,7 @@ const authController = require('../controllers/auth.controller')
  * /api/auth/registerUser:
  *   post:
  *     summary: Register a new user
- *     description: Validates user input, hashes the password, creates a record in Supabase, and sets a 30-day HTTP-only session cookie.
+ *     description: Validates user and profile details, hashes the password, creates both records in Supabase, and sets a 30-day HTTP-only session cookie.
  *     tags:
  *       - Authentication
  *     requestBody:
@@ -20,9 +20,11 @@ const authController = require('../controllers/auth.controller')
  *               - username
  *               - email
  *               - password
+ *               - profile
  *             properties:
  *               name:
  *                 type: string
+ *                 nullable: true
  *                 example: Alex Smith
  *                 maxLength: 100
  *               username:
@@ -41,6 +43,46 @@ const authController = require('../controllers/auth.controller')
  *                 example: SecurePass@123!
  *                 minLength: 8
  *                 maxLength: 72
+ *                 description: Must include uppercase and lowercase letters, a number, and a special character (@$!%*?&)
+ *               profile:
+ *                 type: object
+ *                 required:
+ *                   - height_cm
+ *                   - weight_kg
+ *                   - fitness_goal
+ *                 properties:
+ *                   bio:
+ *                     type: string
+ *                     maxLength: 300
+ *                     default: ""
+ *                     example: Building strength one workout at a time.
+ *                   height_cm:
+ *                     type: number
+ *                     minimum: 50
+ *                     maximum: 280
+ *                     example: 175
+ *                   weight_kg:
+ *                     type: number
+ *                     minimum: 20
+ *                     maximum: 400
+ *                     example: 72.5
+ *                   fitness_goal:
+ *                     type: string
+ *                     enum:
+ *                       - hypertrophy
+ *                       - strength
+ *                       - endurance
+ *                       - weight_loss
+ *                       - general_fitness
+ *                     example: strength
+ *                   experience_level:
+ *                     type: string
+ *                     enum:
+ *                       - beginner
+ *                       - intermediate
+ *                       - advanced
+ *                     default: beginner
+ *                     example: beginner
  *     responses:
  *       201:
  *         description: Registered successfully
@@ -77,6 +119,28 @@ const authController = require('../controllers/auth.controller')
  *                     created_at:
  *                       type: string
  *                       format: date-time
+ *                 profileData:
+ *                   type: object
+ *                   properties:
+ *                     avatar_url:
+ *                       type: string
+ *                       format: uri
+ *                       example: https://api.dicebear.com/7.x/initials/svg?seed=alexsmith_01
+ *                     bio:
+ *                       type: string
+ *                       example: Building strength one workout at a time.
+ *                     height_cm:
+ *                       type: number
+ *                       example: 175
+ *                     weight_kg:
+ *                       type: number
+ *                       example: 72.5
+ *                     fitness_goal:
+ *                       type: string
+ *                       example: strength
+ *                     experience_level:
+ *                       type: string
+ *                       example: beginner
  *       400:
  *         description: Validation error or missing fields
  *         content:
@@ -99,7 +163,7 @@ const authController = require('../controllers/auth.controller')
  *                   type: string
  *                   example: Email or Username is already registered.
  *       500:
- *         description: Database or internal server error
+ *         description: Database or internal server error. Profile initialization failures roll back the user record.
  *         content:
  *           application/json:
  *             schema:
@@ -107,7 +171,7 @@ const authController = require('../controllers/auth.controller')
  *               properties:
  *                 message:
  *                   type: string
- *                   example: Internal Server Error
+ *                   example: Failed to initialize profile. User registration rolled back.
  */
 
 
@@ -116,7 +180,7 @@ const authController = require('../controllers/auth.controller')
  * /api/auth/loginUser:
  *   post:
  *     summary: Log in an existing user
- *     description: Authenticates credentials using either email or username with a password, then sets a 30-day HTTP-only session cookie.
+ *     description: Authenticates credentials using either email or username with a password, returns the user's profile, and sets a 30-day HTTP-only session cookie.
  *     tags:
  *       - Authentication
  *     requestBody:
@@ -173,6 +237,33 @@ const authController = require('../controllers/auth.controller')
  *                     created_at:
  *                       type: string
  *                       format: date-time
+ *                 profile:
+ *                   type: object
+ *                   nullable: true
+ *                   properties:
+ *                     avatar_url:
+ *                       type: string
+ *                       format: uri
+ *                     bio:
+ *                       type: string
+ *                     height_cm:
+ *                       type: number
+ *                     weight_kg:
+ *                       type: number
+ *                     fitness_goal:
+ *                       type: string
+ *                       enum:
+ *                         - hypertrophy
+ *                         - strength
+ *                         - endurance
+ *                         - weight_loss
+ *                         - general_fitness
+ *                     experience_level:
+ *                       type: string
+ *                       enum:
+ *                         - beginner
+ *                         - intermediate
+ *                         - advanced
  *       400:
  *         description: Validation error
  *         content:

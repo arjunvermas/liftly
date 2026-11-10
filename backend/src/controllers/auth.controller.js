@@ -269,7 +269,7 @@ async function loginUser(req, res){
             data : safeUserData,
             profile
         })
-    }catch(error){
+    } catch(error){
         return res.status(500).json({ message: "Internal server error" });
     }
     
