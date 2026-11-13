@@ -13,7 +13,7 @@ function authMiddleWare(req, res, next){
         return next();
     }
     catch(err){
-        console.log(err);
+        console.log(err.message);
         return res.status(401).json({error: "Unauthorized"});
     }
     
