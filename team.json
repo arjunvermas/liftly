@@ -1,0 +1,29 @@
+{
+  "team_number": "T0062",
+  "group_lead": {
+    "name": "Avni",
+    "enrollment_no": "2501010545",
+    "github": "Avniii-2007",
+    "github_username": "Avniii-2007"
+  },
+  "members": [
+    {
+      "name": "Jyoti",
+      "enrollment_no": "2501010207",
+      "github": "Jyotikesari",
+      "github_username": "Jyotikesari"
+    },
+    {
+      "name": "Arjun Verma",
+      "enrollment_no": "2501010693",
+      "github": "arjunvermas",
+      "github_username": "arjunvermas"
+    },
+    {
+      "name": "Vani Dhull",
+      "enrollment_no": "2501010492",
+      "github": "vanidhull28-sketch",
+      "github_username": "vanidhull28-sketch"
+    }
+  ]
+}
