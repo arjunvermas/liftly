@@ -1,5 +1,11 @@
 const express = require('express');
-const { getAllPrograms, getProgramById, createProgram } = require('../controllers/program.controller');
+const {
+  getAllPrograms,
+  getProgramById,
+  createProgram,
+  activateProgram,
+  getActiveProgram,
+} = require('../controllers/program.controller');
 const { authMiddleWare } = require('../middlewares/auth.middleware');
 
 const router = express.Router();
@@ -8,7 +14,7 @@ const router = express.Router();
  * @openapi
  * /api/programs:
  *   get:
- *     summary: Get all default workout programs
+ *     summary: Get default workout programs
  *     tags:
  *       - Programs
  *     responses:
@@ -50,9 +56,30 @@ router.get('/', getAllPrograms);
 
 /**
  * @openapi
+ * /api/programs/active:
+ *   get:
+ *     summary: Get the logged-in user's active program
+ *     tags:
+ *       - Programs
+ *     security:
+ *       - cookieAuth: []
+ *     responses:
+ *       200:
+ *         description: Active program retrieved successfully
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: No active program found
+ *       500:
+ *         description: Failed to fetch active program
+ */
+router.get('/active', authMiddleWare, getActiveProgram);
+
+/**
+ * @openapi
  * /api/programs/{id}:
  *   get:
- *     summary: Get workout program details by ID
+ *     summary: Get a workout program by ID
  *     tags:
  *       - Programs
  *     parameters:
@@ -123,12 +150,8 @@ router.get('/:id', getProgramById);
  *                       maximum: 7
  *                     day_name:
  *                       type: string
- *                       minLength: 1
- *                       maxLength: 100
  *                     focus:
  *                       type: string
- *                       minLength: 1
- *                       maxLength: 50
  *                     exercises:
  *                       type: array
  *                       items:
@@ -143,24 +166,16 @@ router.get('/:id', getProgramById);
  *                             type: string
  *                           order_index:
  *                             type: integer
- *                             minimum: 1
  *                           target_sets:
  *                             type: integer
- *                             minimum: 1
- *                             maximum: 20
  *                           target_reps:
  *                             type: string
- *                             minLength: 1
- *                             maxLength: 20
  *                           rest_seconds:
  *                             type: integer
- *                             minimum: 0
- *                             maximum: 600
  *                             default: 90
  *                           notes:
  *                             type: string
  *                             nullable: true
- *                             maxLength: 255
  *     responses:
  *       201:
  *         description: Workout program created successfully
@@ -173,4 +188,33 @@ router.get('/:id', getProgramById);
  */
 router.post('/', authMiddleWare, createProgram);
 
-module.exports = router;    
+/**
+ * @openapi
+ * /api/programs/{id}/activate:
+ *   post:
+ *     summary: Activate a workout program for the current user
+ *     tags:
+ *       - Programs
+ *     security:
+ *       - cookieAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *         description: Program ID to activate
+ *     responses:
+ *       200:
+ *         description: Program activated successfully
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: Program not found
+ *       500:
+ *         description: Failed to activate program
+ */
+router.post('/:id/activate', authMiddleWare, activateProgram);
+
+module.exports = router;

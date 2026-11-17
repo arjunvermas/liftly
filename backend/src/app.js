@@ -5,6 +5,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger.js");
 const { workoutRoute } = require('./routes/workout.route.js');
 const programRoutes = require('./routes/program.route.js');
+const sessionRoute = require("./routes/session.route");
 const app = express();
 
 app.use(express.json());
@@ -15,5 +16,6 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api/auth', authRoute);
 app.use('/api/workouts', workoutRoute);
 app.use('/api/programs', programRoutes);
-
+app.use('/api/sessions', sessionRoute);
+app.use("/api/sessions", sessionRoute);
 module.exports = app;

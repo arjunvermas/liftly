@@ -1,15 +1,23 @@
-const express = require('express');
-const authRoute = express.Router();
-const authController = require('../controllers/auth.controller')
+const express = require("express");
+const {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getMe,
+  updateUser,
+  updateProfile,
+} = require("../controllers/auth.controller");
+const { authMiddleWare } = require("../middlewares/auth.middleware");
+
+const router = express.Router();
 
 /**
  * @openapi
- * /api/auth/registerUser:
+ * /api/auth/register:
  *   post:
  *     summary: Register a new user
- *     description: Validates user and profile details, hashes the password, creates both records in Supabase, and sets a 30-day HTTP-only session cookie.
  *     tags:
- *       - Authentication
+ *       - Auth
  *     requestBody:
  *       required: true
  *       content:
@@ -25,25 +33,14 @@ const authController = require('../controllers/auth.controller')
  *               name:
  *                 type: string
  *                 nullable: true
- *                 example: Alex Smith
- *                 maxLength: 100
  *               username:
  *                 type: string
- *                 example: alexsmith_01
- *                 minLength: 3
- *                 maxLength: 30
  *               email:
  *                 type: string
  *                 format: email
- *                 example: alex@example.com
- *                 maxLength: 255
  *               password:
  *                 type: string
  *                 format: password
- *                 example: SecurePass@123!
- *                 minLength: 8
- *                 maxLength: 72
- *                 description: Must include uppercase and lowercase letters, a number, and a special character (@$!%*?&)
  *               profile:
  *                 type: object
  *                 required:
@@ -53,19 +50,11 @@ const authController = require('../controllers/auth.controller')
  *                 properties:
  *                   bio:
  *                     type: string
- *                     maxLength: 300
- *                     default: ""
- *                     example: Building strength one workout at a time.
+ *                     nullable: true
  *                   height_cm:
  *                     type: number
- *                     minimum: 50
- *                     maximum: 280
- *                     example: 175
  *                   weight_kg:
  *                     type: number
- *                     minimum: 20
- *                     maximum: 400
- *                     example: 72.5
  *                   fitness_goal:
  *                     type: string
  *                     enum:
@@ -74,115 +63,31 @@ const authController = require('../controllers/auth.controller')
  *                       - endurance
  *                       - weight_loss
  *                       - general_fitness
- *                     example: strength
  *                   experience_level:
  *                     type: string
  *                     enum:
  *                       - beginner
  *                       - intermediate
  *                       - advanced
- *                     default: beginner
- *                     example: beginner
  *     responses:
  *       201:
- *         description: Registered successfully
- *         headers:
- *           Set-Cookie:
- *             description: 30-day HTTP-only JWT token
- *             schema:
- *               type: string
- *               example: token=eyJhbGciOi...; Path=/; HttpOnly; SameSite=Lax
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: registered successfully
- *                 dataWithouthash:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: string
- *                       format: uuid
- *                       example: 4a2b9f4e-28d1-41d6-b072-0ff2382e8d91
- *                     username:
- *                       type: string
- *                       example: alexsmith_01
- *                     email:
- *                       type: string
- *                       example: alex@example.com
- *                     name:
- *                       type: string
- *                       example: Alex Smith
- *                     created_at:
- *                       type: string
- *                       format: date-time
- *                 profileData:
- *                   type: object
- *                   properties:
- *                     avatar_url:
- *                       type: string
- *                       format: uri
- *                       example: https://api.dicebear.com/7.x/initials/svg?seed=alexsmith_01
- *                     bio:
- *                       type: string
- *                       example: Building strength one workout at a time.
- *                     height_cm:
- *                       type: number
- *                       example: 175
- *                     weight_kg:
- *                       type: number
- *                       example: 72.5
- *                     fitness_goal:
- *                       type: string
- *                       example: strength
- *                     experience_level:
- *                       type: string
- *                       example: beginner
+ *         description: User registered successfully
  *       400:
- *         description: Validation error or missing fields
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 errors:
- *                   type: object
- *                   example:
- *                     email: ["Invalid email address"]
+ *         description: Validation error
  *       409:
- *         description: Email or username already registered
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Email or Username is already registered.
+ *         description: Username or email already registered
  *       500:
- *         description: Database or internal server error. Profile initialization failures roll back the user record.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Failed to initialize profile. User registration rolled back.
+ *         description: Registration failed
  */
-
+router.post("/register", registerUser);
 
 /**
  * @openapi
- * /api/auth/loginUser:
+ * /api/auth/login:
  *   post:
- *     summary: Log in an existing user
- *     description: Authenticates credentials using either email or username with a password, returns the user's profile, and sets a 30-day HTTP-only session cookie.
+ *     summary: Log in a user
  *     tags:
- *       - Authentication
+ *       - Auth
  *     requestBody:
  *       required: true
  *       content:
@@ -195,109 +100,141 @@ const authController = require('../controllers/auth.controller')
  *             properties:
  *               identifier:
  *                 type: string
- *                 description: Can be either the username or email address
- *                 example: alexsmith_01
  *               password:
  *                 type: string
  *                 format: password
- *                 example: SecurePass@123!
  *     responses:
  *       200:
- *         description: Logged in successfully
- *         headers:
- *           Set-Cookie:
- *             description: 30-day HTTP-only JWT token
- *             schema:
- *               type: string
- *               example: token=eyJhbGciOi...; Path=/; HttpOnly; SameSite=Lax
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Logged in Successfully
- *                 data:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: string
- *                       format: uuid
- *                       example: 4a2b9f4e-28d1-41d6-b072-0ff2382e8d91
- *                     username:
- *                       type: string
- *                       example: alexsmith_01
- *                     email:
- *                       type: string
- *                       example: alex@example.com
- *                     name:
- *                       type: string
- *                       example: Alex Smith
- *                     created_at:
- *                       type: string
- *                       format: date-time
- *                 profile:
- *                   type: object
- *                   nullable: true
- *                   properties:
- *                     avatar_url:
- *                       type: string
- *                       format: uri
- *                     bio:
- *                       type: string
- *                     height_cm:
- *                       type: number
- *                     weight_kg:
- *                       type: number
- *                     fitness_goal:
- *                       type: string
- *                       enum:
- *                         - hypertrophy
- *                         - strength
- *                         - endurance
- *                         - weight_loss
- *                         - general_fitness
- *                     experience_level:
- *                       type: string
- *                       enum:
- *                         - beginner
- *                         - intermediate
- *                         - advanced
+ *         description: Login successful
  *       400:
  *         description: Validation error
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 errors:
- *                   type: object
- *                   example:
- *                     identifier: ["Username or Email is required"]
  *       401:
  *         description: Invalid credentials
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Invalid credentials
  *       500:
- *         description: Internal server error
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Internal server error
+ *         description: Login failed
  */
+router.post("/login", loginUser);
 
+/**
+ * @openapi
+ * /api/auth/logout:
+ *   post:
+ *     summary: Log out the current user
+ *     tags:
+ *       - Auth
+ *     responses:
+ *       200:
+ *         description: Logged out successfully
+ */
+router.post("/logout", logoutUser);
 
-authRoute.post('/registerUser', authController.registerUser);
-authRoute.post('/loginUser', authController.loginUser);
-module.exports = {authRoute};
+/**
+ * @openapi
+ * /api/auth/me:
+ *   get:
+ *     summary: Get current authenticated user
+ *     tags:
+ *       - Auth
+ *     security:
+ *       - cookieAuth: []
+ *     responses:
+ *       200:
+ *         description: User profile retrieved successfully
+ *       401:
+ *         description: Unauthorized
+ *       404:
+ *         description: User not found
+ *       500:
+ *         description: Failed to fetch user data
+ */
+router.get("/me", authMiddleWare, getMe);
+
+/**
+ * @openapi
+ * /api/auth/user:
+ *   patch:
+ *     summary: Update authenticated user account fields
+ *     tags:
+ *       - Auth
+ *     security:
+ *       - cookieAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               username:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *                 format: email
+ *     responses:
+ *       200:
+ *         description: User updated successfully
+ *       400:
+ *         description: Validation error
+ *       401:
+ *         description: Unauthorized
+ *       409:
+ *         description: Username or email already taken
+ *       500:
+ *         description: Update failed
+ */
+router.patch("/user", authMiddleWare, updateUser);
+
+/**
+ * @openapi
+ * /api/auth/profile:
+ *   patch:
+ *     summary: Update authenticated user profile
+ *     tags:
+ *       - Auth
+ *     security:
+ *       - cookieAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               avatar_url:
+ *                 type: string
+ *                 format: uri
+ *               bio:
+ *                 type: string
+ *               height_cm:
+ *                 type: number
+ *               weight_kg:
+ *                 type: number
+ *               fitness_goal:
+ *                 type: string
+ *                 enum:
+ *                   - hypertrophy
+ *                   - strength
+ *                   - endurance
+ *                   - weight_loss
+ *                   - general_fitness
+ *               experience_level:
+ *                 type: string
+ *                 enum:
+ *                   - beginner
+ *                   - intermediate
+ *                   - advanced
+ *     responses:
+ *       200:
+ *         description: Profile updated successfully
+ *       400:
+ *         description: Validation error
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Update failed
+ */
+router.patch("/profile", authMiddleWare, updateProfile);
+
+module.exports = { authRoute: router };
