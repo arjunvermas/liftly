@@ -6,6 +6,7 @@ const {
   getMe,
   updateUser,
   updateProfile,
+  googleAuth
 } = require("../controllers/auth.controller");
 const { authMiddleWare } = require("../middlewares/auth.middleware");
 
@@ -236,5 +237,5 @@ router.patch("/user", authMiddleWare, updateUser);
  *         description: Update failed
  */
 router.patch("/profile", authMiddleWare, updateProfile);
-
+router.post("/google", googleAuth);
 module.exports = { authRoute: router };

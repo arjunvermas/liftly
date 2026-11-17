@@ -22,6 +22,7 @@
     "imagekit": "^6.0.0",
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.5.0",
+    "node-appwrite": "^31.3.0",
     "swagger-jsdoc": "^6.3.0",
     "swagger-ui-express": "^5.0.1",
     "zod": "^4.6.5"
