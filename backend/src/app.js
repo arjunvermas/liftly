@@ -17,5 +17,5 @@ app.use('/api/auth', authRoute);
 app.use('/api/workouts', workoutRoute);
 app.use('/api/programs', programRoutes);
 app.use('/api/sessions', sessionRoute);
-app.use("/api/sessions", sessionRoute);
+
 module.exports = app;
