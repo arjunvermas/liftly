@@ -2,122 +2,712 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Google OAuth Test</title>
-  <script src="https://cdn.jsdelivr.net/npm/appwrite@16.0.2"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liftly — Your Strength Companion</title>
+  <meta name="description" content="Liftly is the clean, distraction-free strength app. Log sets in seconds, calculate barbell plates effortlessly, and watch your numbers go up." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Liftly — Your Strength Companion" />
+  <meta property="og:description" content="Log sets in seconds, calculate barbell plates effortlessly, and watch your numbers go up." />
+  <meta name="twitter:card"       content="summary_large_image" />
+  <link rel="icon" href="liftly_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="landing.css" />
 </head>
 <body>
-  <h2>Google OAuth + Express Cookie Test</h2>
-  <p id="status">Ready.</p>
 
-  <button onclick="loginWithGoogle()">Continue with Google</button>
-  <button onclick="checkMe()">Test GET /api/auth/me</button>
-  <button onclick="logout()">Logout</button>
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header" id="site-header">
+    <div class="hdr-inner">
+      <!-- Brand -->
+      <a href="index.html" class="hdr-brand" aria-label="Liftly home">
+        <img src="liftly_logo.png" alt="Liftly" class="hdr-logo" />
+        <span class="hdr-name">Liftly</span>
+      </a>
 
-  <pre id="output"></pre>
+      <!-- Desktop nav -->
+      <nav class="hdr-nav" aria-label="Main navigation">
+        <a href="#features"    class="hdr-link">Features</a>
+        <a href="#mobile"      class="hdr-link">Mobile app</a>
+        <a href="#reviews"     class="hdr-link">Reviews</a>
+        <a href="#pricing"     class="hdr-link">Pricing</a>
+      </nav>
+
+      <!-- CTA group -->
+      <div class="hdr-cta">
+        <a href="auth.html" class="hdr-login" id="hdr-login-btn">Log in</a>
+        <a href="auth.html" class="btn-pill btn-pill-primary" id="hdr-signup-btn">Get started</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="hdr-burger" id="hdr-burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="hdr-drawer" id="hdr-drawer" aria-hidden="true">
+      <nav aria-label="Mobile navigation">
+        <a href="#features"  class="drawer-link">Features</a>
+        <a href="#mobile"    class="drawer-link">Mobile app</a>
+        <a href="#reviews"   class="drawer-link">Reviews</a>
+        <a href="#pricing"   class="drawer-link">Pricing</a>
+        <div class="drawer-sep"></div>
+        <a href="auth.html"  class="drawer-link">Log in</a>
+        <a href="auth.html"  class="btn-pill btn-pill-primary drawer-cta">Get started free</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+
+      <!-- Full-bleed gym background -->
+      <div class="hero-bg" aria-hidden="true">
+        <img src="hero_bg.png" alt="" class="hero-bg-img" />
+        <div class="hero-bg-overlay"></div>
+      </div>
+
+      <div class="hero-inner">
+
+        <!-- Desktop layout: left copy + right visual -->
+        <div class="hero-copy" data-aos>
+          <div class="hero-eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            Strength tracking, simplified
+          </div>
+
+          <h1 class="hero-title" id="hero-title">
+            Lift more<br />with <span class="txt-teal">Liftly</span>.
+          </h1>
+
+          <p class="hero-sub">
+            The clean, distraction-free strength app. Log sets in seconds,
+            calculate barbell plates effortlessly, and watch your numbers go up.
+          </p>
+
+          <!-- Store badges -->
+          <div class="store-row">
+            <a href="#" class="store-badge" id="hero-ios" aria-label="Download on App Store">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.73M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <div>
+                <span class="store-label">Download on the</span>
+                <span class="store-name">App Store</span>
+              </div>
+            </a>
+            <a href="#" class="store-badge" id="hero-android" aria-label="Get it on Google Play">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.18 23.76c.3.17.65.19.98.08l13.12-7.42-2.83-2.83-11.27 10.17zm-1.4-2.3c-.05-.16-.08-.34-.08-.54V3.08c0-.2.03-.38.08-.54L13 12l-11.22 9.46zM21.14 10.4L18.9 9.1l-3.14 3.14 3.14 3.14 2.27-1.3c.65-.37 1.09-1.06 1.09-1.84 0-.78-.44-1.47-1.12-1.84zM4.16.16C3.83.05 3.48.07 3.18.24L14.46 11.1l-2.83 2.83 2.17 2.17 7.34-7.1-17-8.84z"/></svg>
+              <div>
+                <span class="store-label">Get it on</span>
+                <span class="store-name">Google Play</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Web login CTA -->
+          <div class="hero-web-cta">
+            <span class="hero-web-text">Already have an account?</span>
+            <a href="auth.html" class="hero-web-link" id="hero-login-link">Log in to web app →</a>
+          </div>
+        </div>
+
+        <!-- Right: phone mockup -->
+        <div class="hero-visual" data-aos data-aos-delay="150" aria-hidden="true">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <!-- Workout card inside phone -->
+              <div class="ps-header">
+                <div class="ps-time">09:41</div>
+                <div class="ps-pill">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  41:22
+                </div>
+              </div>
+
+              <div class="ps-workout-label">TODAY'S WORKOUT</div>
+              <div class="ps-workout-name">Push Day A</div>
+
+              <div class="ps-exercise">
+                <div class="ps-ex-row">
+                  <span class="ps-ex-name">Bench Press</span>
+                  <span class="ps-ex-tag">Chest</span>
+                </div>
+                <div class="ps-sets">
+                  <div class="ps-set-hdr"><span>Set</span><span>kg</span><span>Reps</span><span></span></div>
+                  <div class="ps-set ps-set-done"><span>1</span><span>80</span><span>10</span><span class="ps-check">✓</span></div>
+                  <div class="ps-set ps-set-done"><span>2</span><span>90</span><span>8</span><span class="ps-check">✓</span></div>
+                  <div class="ps-set ps-set-active">
+                    <span>3</span>
+                    <span class="ps-pill-input">100</span>
+                    <span class="ps-pill-input">6</span>
+                    <button class="ps-log-btn">Log</button>
+                  </div>
+                  <div class="ps-set ps-set-pending"><span>4</span><span>—</span><span>—</span><span class="ps-dot"></span></div>
+                </div>
+              </div>
+
+              <div class="ps-timer">
+                <div class="ps-timer-label">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  REST TIMER
+                </div>
+                <div class="ps-timer-val">1:45</div>
+                <div class="ps-timer-bar"><div class="ps-timer-fill" style="width:58%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating badges -->
+          <div class="float-badge float-badge-pr">
+            <span>🏆</span>
+            <div>
+              <b>New PR!</b>
+              <small>Squat — 142.5 kg</small>
+            </div>
+          </div>
+          <div class="float-badge float-badge-vol">
+            <span>📈</span>
+            <div>
+              <b>+12% Volume</b>
+              <small>vs last week</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TRUST BAR
+    ============================================================ -->
+    <div class="trust-bar" role="region" aria-label="Social proof">
+      <div class="trust-inner">
+        <span class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Rated 4.9 on App Store</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>50,000+ lifters</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>No ads, ever</span>
+        <span class="trust-sep" aria-hidden="true">·</span>
+        <span class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>iOS &amp; Android</span>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         MOBILE SHOWCASE
+    ============================================================ -->
+    <section class="mobile-section" id="mobile" aria-labelledby="mobile-title">
+      <div class="section-wrap">
+
+        <div class="section-label-row" data-aos>
+          <span class="section-eyebrow">iOS and Android app</span>
+          <h2 class="section-title" id="mobile-title">Then take Liftly<br />to the gym.</h2>
+          <p class="section-sub">Use the mobile app where training actually happens. Log sets quickly, follow your programs, and keep your progress in sync across iPhone, Android, and the web.</p>
+          <div class="store-row" style="justify-content:flex-start">
+            <a href="#" class="store-badge" id="mob-ios"     aria-label="Download on App Store">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.73M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <div><span class="store-label">Download on the</span><span class="store-name">App Store</span></div>
+            </a>
+            <a href="#" class="store-badge" id="mob-android" aria-label="Get it on Google Play">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.18 23.76c.3.17.65.19.98.08l13.12-7.42-2.83-2.83-11.27 10.17zm-1.4-2.3c-.05-.16-.08-.34-.08-.54V3.08c0-.2.03-.38.08-.54L13 12l-11.22 9.46zM21.14 10.4L18.9 9.1l-3.14 3.14 3.14 3.14 2.27-1.3c.65-.37 1.09-1.06 1.09-1.84 0-.78-.44-1.47-1.12-1.84zM4.16.16C3.83.05 3.48.07 3.18.24L14.46 11.1l-2.83 2.83 2.17 2.17 7.34-7.1-17-8.84z"/></svg>
+              <div><span class="store-label">Get it on</span><span class="store-name">Google Play</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Screenshot scroller -->
+        <div class="screenshot-scroller" aria-label="App screenshots">
+          <div class="screenshot-track" id="ss-track">
+            <div class="ss-card">
+              <div class="ss-card-inner">
+                <img src="liftly_mockup.png" alt="Liftly workout logging screen" />
+              </div>
+            </div>
+            <div class="ss-card">
+              <div class="ss-card-inner ss-card-alt">
+                <div class="ss-alt-content">
+                  <div class="ss-label">🏋️ Bench Press PR</div>
+                  <div class="ss-big-num">120 kg</div>
+                  <div class="ss-delta">↑ +5 kg from last week</div>
+                  <div class="ss-chart-bars">
+                    <div class="ss-bar" style="height:40%"></div>
+                    <div class="ss-bar" style="height:55%"></div>
+                    <div class="ss-bar" style="height:48%"></div>
+                    <div class="ss-bar" style="height:62%"></div>
+                    <div class="ss-bar" style="height:70%"></div>
+                    <div class="ss-bar" style="height:66%"></div>
+                    <div class="ss-bar ss-bar-active" style="height:85%"></div>
+                  </div>
+                  <div class="ss-chart-label">8-week bench progression</div>
+                </div>
+              </div>
+            </div>
+            <div class="ss-card">
+              <div class="ss-card-inner ss-card-plates">
+                <div class="ss-alt-content">
+                  <div class="ss-label">🔢 Plate Calculator</div>
+                  <div class="ss-target">Target: <strong>102.5 kg</strong></div>
+                  <div class="ss-plates-row">
+                    <div class="ss-plate ss-p25">25</div>
+                    <div class="ss-plate ss-p10">10</div>
+                    <div class="ss-plate ss-p5">5</div>
+                    <div class="ss-plate ss-p2">2.5</div>
+                  </div>
+                  <div class="ss-plates-note">per side · 20 kg bar</div>
+                  <div class="ss-timer-mini">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Rest: 1:45
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ss-dots" aria-label="Slide indicators">
+            <button class="ss-dot ss-dot-active" aria-label="Slide 1"></button>
+            <button class="ss-dot" aria-label="Slide 2"></button>
+            <button class="ss-dot" aria-label="Slide 3"></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FEATURES / BENEFITS
+    ============================================================ -->
+    <section class="features-section" id="features" aria-labelledby="features-title">
+      <div class="section-wrap">
+        <div class="section-center" data-aos>
+          <span class="section-eyebrow">We're here to help you get stronger</span>
+          <h2 class="section-title" id="features-title">Everything a serious<br />lifter needs.</h2>
+        </div>
+
+        <div class="feat-grid">
+          <article class="feat-card" data-aos data-aos-delay="0" id="feat-log">
+            <div class="feat-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
+            <h3 class="feat-title">Log workouts</h3>
+            <p class="feat-desc">Track and plan your workouts efficiently. Auto-fills last session's weight and reps — log a set in one tap.</p>
+          </article>
+
+          <article class="feat-card" data-aos data-aos-delay="80" id="feat-muscle">
+            <div class="feat-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9H4.5a2.5 2.5 0 010-5H6"/><path d="M18 9h1.5a2.5 2.5 0 000-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0012 0V2z"/></svg>
+            </div>
+            <h3 class="feat-title">Build muscle</h3>
+            <p class="feat-desc">Whether your goal is strength, size, or weight loss — follow proven programs or build your own. Liftly adapts to you.</p>
+          </article>
+
+          <article class="feat-card" data-aos data-aos-delay="160" id="feat-progress">
+            <div class="feat-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3 class="feat-title">See progress</h3>
+            <p class="feat-desc">Keep an eye on your improvements with detailed graphs and PR notifications. The numbers don't lie.</p>
+          </article>
+
+          <article class="feat-card" data-aos data-aos-delay="240" id="feat-plates">
+            <div class="feat-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            </div>
+            <h3 class="feat-title">Plate calculator</h3>
+            <p class="feat-desc">Type the target weight, instantly see which plates to load. No mental math standing at the rack.</p>
+          </article>
+
+          <article class="feat-card" data-aos data-aos-delay="320" id="feat-timer">
+            <div class="feat-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="feat-title">Rest timer</h3>
+            <p class="feat-desc">Starts automatically after every logged set. Vibrates when it's time to lift again. Stay in the zone.</p>
+          </article>
+
+          <article class="feat-card" data-aos data-aos-delay="400" id="feat-pr">
+            <div class="feat-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <h3 class="feat-title">PR celebrations</h3>
+            <p class="feat-desc">Every personal record gets the moment it deserves. Liftly detects new 1RM, volume PRs, and rep records.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WEB APP SECTION
+    ============================================================ -->
+    <section class="web-section" id="web-app" aria-labelledby="web-title">
+      <div class="section-wrap web-grid">
+        <div class="web-copy" data-aos>
+          <span class="section-eyebrow">Available on web</span>
+          <h2 class="section-title" id="web-title">Use Liftly on a<br />bigger screen.</h2>
+          <p class="section-sub">Plan workouts, review progress, and manage your training from your browser. Full access to your data, programs, and history whenever you're away from the gym.</p>
+          <a href="auth.html" class="btn-pill btn-pill-primary" id="web-open-btn">Open web app →</a>
+        </div>
+        <div class="web-visual" data-aos data-aos-delay="120" aria-hidden="true">
+          <div class="web-screen">
+            <div class="web-screen-chrome">
+              <div class="chrome-dots"><span></span><span></span><span></span></div>
+              <div class="chrome-url">liftly.app/dashboard</div>
+            </div>
+            <div class="web-screen-body">
+              <!-- Mini dashboard preview -->
+              <div class="dash-sidebar">
+                <div class="dash-nav-item dash-nav-active">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                  Dashboard
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  Workouts
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  Progress
+                </div>
+                <div class="dash-nav-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  Programs
+                </div>
+              </div>
+              <div class="dash-main">
+                <div class="dash-row">
+                  <div class="dash-stat-card">
+                    <div class="dsc-label">This week</div>
+                    <div class="dsc-val">4 <span>sessions</span></div>
+                  </div>
+                  <div class="dash-stat-card">
+                    <div class="dsc-label">Volume</div>
+                    <div class="dsc-val">12.4k <span>kg</span></div>
+                  </div>
+                  <div class="dash-stat-card">
+                    <div class="dsc-label">PRs this month</div>
+                    <div class="dsc-val txt-teal">3</div>
+                  </div>
+                </div>
+                <!-- Mini chart -->
+                <div class="dash-chart">
+                  <div class="dash-chart-label">Bench Press — 12 weeks</div>
+                  <svg viewBox="0 0 300 60" class="dash-svg" aria-label="Bench press progress">
+                    <defs>
+                      <linearGradient id="dg" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#00D4AA" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#00D4AA" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,50 C20,46 40,42 60,38 C80,34 100,32 120,28 C140,24 160,22 180,18 C200,14 220,12 240,9 C260,6 280,5 300,3" fill="none" stroke="#00D4AA" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M0,50 C20,46 40,42 60,38 C80,34 100,32 120,28 C140,24 160,22 180,18 C200,14 220,12 240,9 C260,6 280,5 300,3 L300,60 L0,60Z" fill="url(#dg)"/>
+                    <circle cx="300" cy="3" r="3" fill="#00D4AA"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         REVIEWS
+    ============================================================ -->
+    <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
+      <div class="section-wrap">
+        <div class="section-center" data-aos>
+          <span class="section-eyebrow">What lifters say</span>
+          <h2 class="section-title" id="reviews-title">Rated highly by people<br />who train.</h2>
+          <p class="section-sub">Real reviews from the App Store and Google Play.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card" data-aos data-aos-delay="0" id="review-1">
+            <div class="review-stars" aria-label="5 stars">★★★★★</div>
+            <p class="review-quote">"Finally an app that gets out of my way. I open it, log my sets, and go. The plate calculator alone is worth it."</p>
+            <div class="review-author">
+              <div class="review-av" aria-hidden="true">MK</div>
+              <div>
+                <span class="review-name">Marcus K.</span>
+                <a href="#" class="review-src">App Store</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card" data-aos data-aos-delay="80" id="review-2">
+            <div class="review-stars" aria-label="5 stars">★★★★★</div>
+            <p class="review-quote">"UI/UX is seamless. I could easily create a workout plan. I've tried countless apps — Liftly is the only one I've used consistently."</p>
+            <div class="review-author">
+              <div class="review-av" aria-hidden="true">SR</div>
+              <div>
+                <span class="review-name">Sofia R.</span>
+                <a href="#" class="review-src">Google Play</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card" data-aos data-aos-delay="160" id="review-3">
+            <div class="review-stars" aria-label="5 stars">★★★★★</div>
+            <p class="review-quote">"The PR notifications hit different. Every time I hit a new record it celebrates you — it keeps me coming back every session."</p>
+            <div class="review-author">
+              <div class="review-av" aria-hidden="true">DJ</div>
+              <div>
+                <span class="review-name">Dev J.</span>
+                <a href="#" class="review-src">App Store</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="review-card" data-aos data-aos-delay="240" id="review-4">
+            <div class="review-stars" aria-label="5 stars">★★★★★</div>
+            <p class="review-quote">"Liftly helps me automatically track my progress. Never been so consistent and serious about my training."</p>
+            <div class="review-author">
+              <div class="review-av" aria-hidden="true">AL</div>
+              <div>
+                <span class="review-name">Anika L.</span>
+                <a href="#" class="review-src">App Store</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRICING
+    ============================================================ -->
+    <section class="pricing-section" id="pricing" aria-labelledby="pricing-title">
+      <div class="section-wrap">
+        <div class="section-center" data-aos>
+          <span class="section-eyebrow">Simple pricing</span>
+          <h2 class="section-title" id="pricing-title">Free to start.<br />Powerful to upgrade.</h2>
+        </div>
+        <div class="pricing-grid">
+          <div class="price-card" data-aos data-aos-delay="0" id="price-free">
+            <div class="price-plan">Free</div>
+            <div class="price-amount"><span class="price-cur">$</span>0<span class="price-per">/forever</span></div>
+            <p class="price-desc">Everything you need to start getting stronger today.</p>
+            <ul class="price-feats">
+              <li>Unlimited workout logging</li>
+              <li>Plate calculator</li>
+              <li>Rest timer</li>
+              <li>3 built-in programs</li>
+              <li>PR tracking</li>
+            </ul>
+            <a href="auth.html" class="btn-pill btn-pill-outline btn-pill-block" id="free-cta">Get started free</a>
+          </div>
+          <div class="price-card price-card-pro" data-aos data-aos-delay="100" id="price-pro">
+            <div class="price-popular">Most Popular</div>
+            <div class="price-plan">Pro</div>
+            <div class="price-amount"><span class="price-cur">$</span>6<span class="price-per">/month</span></div>
+            <p class="price-desc">For lifters serious about their numbers going up.</p>
+            <ul class="price-feats">
+              <li>Everything in Free</li>
+              <li>Advanced analytics &amp; graphs</li>
+              <li>Custom program builder</li>
+              <li>Body measurement tracking</li>
+              <li>Volume &amp; tonnage trends</li>
+              <li>Workout export (CSV, JSON)</li>
+              <li>Priority support</li>
+            </ul>
+            <a href="auth.html" class="btn-pill btn-pill-primary btn-pill-block" id="pro-cta">Start 14-day free trial</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL CTA
+    ============================================================ -->
+    <section class="final-cta-section" id="download" aria-labelledby="cta-title">
+      <div class="section-wrap">
+        <div class="cta-box" data-aos>
+          <div class="cta-glow" aria-hidden="true"></div>
+          <img src="liftly_logo.png" alt="" class="cta-logo" aria-hidden="true" />
+          <h2 class="cta-title" id="cta-title">Your next PR is waiting.</h2>
+          <p class="cta-sub">Start logging today. It's free, it's fast, and your future self will thank you.</p>
+          <div class="cta-actions">
+            <a href="auth.html" class="btn-pill btn-pill-primary btn-pill-lg" id="cta-main">Start for free</a>
+            <div class="store-row">
+              <a href="#" class="store-badge" id="cta-ios"     aria-label="App Store"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.73M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg><div><span class="store-name">App Store</span></div></a>
+              <a href="#" class="store-badge" id="cta-android" aria-label="Google Play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.18 23.76c.3.17.65.19.98.08l13.12-7.42-2.83-2.83-11.27 10.17zm-1.4-2.3c-.05-.16-.08-.34-.08-.54V3.08c0-.2.03-.38.08-.54L13 12l-11.22 9.46zM21.14 10.4L18.9 9.1l-3.14 3.14 3.14 3.14 2.27-1.3c.65-.37 1.09-1.06 1.09-1.84 0-.78-.44-1.47-1.12-1.84zM4.16.16C3.83.05 3.48.07 3.18.24L14.46 11.1l-2.83 2.83 2.17 2.17 7.34-7.1-17-8.84z"/></svg><div><span class="store-name">Google Play</span></div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="hdr-brand">
+          <img src="liftly_logo.png" alt="Liftly" class="hdr-logo" />
+          <span class="hdr-name">Liftly</span>
+        </a>
+        <p class="footer-tagline">The clean, distraction-free strength app.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-title">Product</h3>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="auth.html">Download</a>
+        <a href="#">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-title">Company</h3>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-col-title">Legal</h3>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Liftly. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="X (Twitter)" id="social-x">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram" id="social-ig">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok" id="social-tt">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.52V6.76a4.84 4.84 0 01-1.02-.07z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    const CONFIG = {
-      APPWRITE_ENDPOINT: "https://sgp.cloud.appwrite.io/v1",
-      APPWRITE_PROJECT_ID: "6afbcbdd0025f10fae27",
-      BACKEND_URL: "http://localhost:3000/api",
-    };
+    /* ============================================================
+       HEADER — scroll glass effect + hamburger
+    ============================================================ */
+    const hdr    = document.getElementById('site-header');
+    const burger = document.getElementById('hdr-burger');
+    const drawer = document.getElementById('hdr-drawer');
+    let drawerOpen = false;
 
-    const { Client, Account, OAuthProvider } = Appwrite;
+    window.addEventListener('scroll', () => {
+      hdr.classList.toggle('hdr-scrolled', window.scrollY > 40);
+    }, { passive: true });
 
-    function createFreshAccount() {
-      const client = new Client()
-        .setEndpoint(CONFIG.APPWRITE_ENDPOINT)
-        .setProject(CONFIG.APPWRITE_PROJECT_ID);
-      return new Account(client);
-    }
+    burger.addEventListener('click', () => {
+      drawerOpen = !drawerOpen;
+      burger.setAttribute('aria-expanded', drawerOpen);
+      drawer.setAttribute('aria-hidden', !drawerOpen);
+      drawer.classList.toggle('drawer-open', drawerOpen);
+      burger.classList.toggle('burger-open', drawerOpen);
+    });
 
-    const statusEl = document.getElementById("status");
-    const outputEl = document.getElementById("output");
+    // Close drawer on link click
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        drawerOpen = false;
+        burger.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+        drawer.classList.remove('drawer-open');
+        burger.classList.remove('burger-open');
+      });
+    });
 
-    function show(msg, data) {
-      statusEl.textContent = msg;
-      outputEl.textContent = data ? JSON.stringify(data, null, 2) : "";
-    }
+    /* ============================================================
+       SMOOTH ANCHOR SCROLL
+    ============================================================ */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const top = target.offsetTop - (hdr.offsetHeight + 16);
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
 
-    function loginWithGoogle() {
-      const account = createFreshAccount();
-      const currentUrl = window.location.origin + window.location.pathname;
-      account.createOAuth2Token(
-        OAuthProvider.Google,
-        currentUrl,
-        currentUrl + "?oauth=failed"
-      );
-    }
+    /* ============================================================
+       SCROLL REVEAL (data-aos)
+    ============================================================ */
+    const aosObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const delay = e.target.dataset.aosDelay || 0;
+          setTimeout(() => e.target.classList.add('aos-visible'), parseInt(delay));
+          aosObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    async function handleOAuthRedirect() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("oauth") === "failed") {
-        window.history.replaceState({}, "", window.location.pathname);
-        return show("Google login cancelled or failed.");
+    document.querySelectorAll('[data-aos]').forEach(el => aosObserver.observe(el));
+
+    /* ============================================================
+       SCREENSHOT SCROLLER
+    ============================================================ */
+    const track = document.getElementById('ss-track');
+    const dots  = document.querySelectorAll('.ss-dot');
+    let current = 0;
+
+    if (track) {
+      function goToSlide(n) {
+        current = n;
+        const cards = track.querySelectorAll('.ss-card');
+        const w     = cards[0]?.offsetWidth + 24 || 300;
+        track.style.transform = `translateX(-${n * w}px)`;
+        dots.forEach((d, i) => d.classList.toggle('ss-dot-active', i === n));
       }
 
-      const userId = params.get("userId");
-      const secret = params.get("secret");
-      if (!userId || !secret) return;
+      dots.forEach((d, i) => d.addEventListener('click', () => goToSlide(i)));
 
-      window.history.replaceState({}, "", window.location.pathname);
+      // Touch swipe
+      let tx = 0;
+      track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend',   e => {
+        const dx = e.changedTouches[0].clientX - tx;
+        const cards = track.querySelectorAll('.ss-card');
+        if (Math.abs(dx) > 50) {
+          current = dx < 0
+            ? Math.min(current + 1, cards.length - 1)
+            : Math.max(current - 1, 0);
+          goToSlide(current);
+        }
+      }, { passive: true });
 
-      try {
-        show("Creating Appwrite session & minting JWT...");
-
-        // 1. Clear any leftover session BEFORE creating the new one
-        const existingAccount = createFreshAccount();
-        await existingAccount.deleteSession("current").catch(() => {});
-        localStorage.removeItem("cookieFallback");
-
-        // 2. Create fresh session and mint JWT (keep session alive until backend verifies it)
-        const freshAccount = createFreshAccount();
-        await freshAccount.createSession(userId, secret);
-        const { jwt } = await freshAccount.createJWT();
-
-        // 3. Exchange JWT with Express backend FIRST while Appwrite session is still active
-        show("Exchanging Appwrite JWT at POST /api/auth/google...");
-        const res = await fetch(`${CONFIG.BACKEND_URL}/auth/google`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ appwriteJwt: jwt }),
-        });
-
-        const data = await res.json();
-
-        // 4. Clean up Appwrite session AFTER backend verifies JWT & sets HTTP-only cookie
-        await freshAccount.deleteSession("current").catch(() => {});
-        localStorage.removeItem("cookieFallback");
-
-        show(`Backend responded (${res.status}):`, data);
-      } catch (err) {
-        show("Error during OAuth exchange:", { error: err.message });
-      }
+      // Auto-advance
+      setInterval(() => goToSlide((current + 1) % 3), 4000);
     }
 
-    async function checkMe() {
-      const res = await fetch(`${CONFIG.BACKEND_URL}/auth/me`, {
-        credentials: "include",
+    /* ============================================================
+       ACTIVE NAV LINK on scroll
+    ============================================================ */
+    const sections  = document.querySelectorAll('section[id]');
+    const navLinks  = document.querySelectorAll('.hdr-link');
+
+    window.addEventListener('scroll', () => {
+      const sy = window.scrollY + hdr.offsetHeight + 60;
+      sections.forEach(s => {
+        if (sy >= s.offsetTop && sy < s.offsetTop + s.offsetHeight) {
+          navLinks.forEach(l => l.classList.toggle('hdr-link-active', l.getAttribute('href') === `#${s.id}`));
+        }
       });
-      const data = await res.json();
-      show(`GET /auth/me (${res.status}):`, data);
-    }
-
-    async function logout() {
-      const account = createFreshAccount();
-      await account.deleteSession("current").catch(() => {});
-      localStorage.removeItem("cookieFallback");
-
-      const res = await fetch(`${CONFIG.BACKEND_URL}/auth/logout`, {
-        method: "POST",
-        credentials: "include",
-      });
-      const data = await res.json();
-      show("Logged out:", data);
-    }
-
-    handleOAuthRedirect();
+    }, { passive: true });
   </script>
 </body>
 </html>
