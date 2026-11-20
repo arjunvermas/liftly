@@ -1,17 +1,14 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAuth } from './hooks/useAuth'
-
 // Layout & Protected Route
 import Layout from './components/layout/Layout'
 import ProtectedRoute from './components/ui/ProtectedRoute'
-
 // Pages
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import OnboardingPage from './pages/OnboardingPage'
 import OAuthCallbackPage from './pages/OAuthCallbackPage'
-
 import DashboardPage from './pages/DashboardPage'
 import ProgramsPage from './pages/ProgramsPage'
 import CreateProgramPage from './pages/CreateProgramPage'
