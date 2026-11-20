@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1470 1285" width="1470" height="1285" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="114%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <pattern id="dot-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#CBD5E1" opacity="0.55"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas background -->
+  <rect width="1470" height="1285" fill="#F8FAFC"/>
+  <rect width="1470" height="1285" fill="url(#dot-grid)"/>
+
+  <!-- Header Banner -->
+  <rect x="60" y="24" width="1350" height="62" rx="12" fill="#0F172A"/>
+  <text x="84" y="51" font-size="20" font-weight="700" fill="#FFFFFF">Liftly — Entity-Relationship Diagram (PostgreSQL / Supabase)</text>
+  <text x="84" y="72" font-size="12" fill="#94A3B8">9 Tables  ·  11 Foreign-Key Relationships  ·  Crow's-Foot Notation  ·  Matches dbms/03_schema.sql</text>
+
+  <!-- Domain Chips in Header -->
+  <g transform="translate(970, 43)">
+    <rect x="0" y="0" width="96" height="24" rx="12" fill="#4338CA"/>
+    <text x="48" y="16" text-anchor="middle" font-size="10.5" font-weight="600" fill="#FFFFFF">Auth &amp; Profile</text>
+    <rect x="106" y="0" width="110" height="24" rx="12" fill="#047857"/>
+    <text x="161" y="16" text-anchor="middle" font-size="10.5" font-weight="600" fill="#FFFFFF">Programs &amp; Splits</text>
+    <rect x="226" y="0" width="84" height="24" rx="12" fill="#B45309"/>
+    <text x="268" y="16" text-anchor="middle" font-size="10.5" font-weight="600" fill="#FFFFFF">Exercises</text>
+    <rect x="320" y="0" width="96" height="24" rx="12" fill="#BE123C"/>
+    <text x="368" y="16" text-anchor="middle" font-size="10.5" font-weight="600" fill="#FFFFFF">Session Logs</text>
+  </g>
+
+  <!-- Relationship Connectors (drawn behind labels) -->
+  <g id="relationships">
+    <polyline points="235.0,490.0 235.0,384.0" fill="none" stroke="#4338CA" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="228.0" y1="482.0" x2="242.0" y2="482.0" stroke="#4338CA" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="228.0" y1="475.0" x2="242.0" y2="475.0" stroke="#4338CA" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="228.0" y1="392.0" x2="242.0" y2="392.0" stroke="#4338CA" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="235.0" cy="401.0" r="4.5" fill="#F8FAFC" stroke="#4338CA" stroke-width="1.8"/>
+    <polyline points="350.0,490.0 350.0,415.0 735.0,415.0 735.0,264.0" fill="none" stroke="#047857" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="343.0" y1="482.0" x2="357.0" y2="482.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="343.0" y1="475.0" x2="357.0" y2="475.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="728.0" y1="272.0" x2="742.0" y2="272.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="735.0" cy="281.0" r="4.5" fill="#F8FAFC" stroke="#047857" stroke-width="1.8"/>
+    <polyline points="410.0,515.0 470.0,515.0 470.0,458.0 1150.0,458.0 1150.0,360.0" fill="none" stroke="#047857" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="418.0" y1="508.0" x2="418.0" y2="522.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="427.0" cy="515.0" r="4.5" fill="#F8FAFC" stroke="#047857" stroke-width="1.8"/>
+    <line x1="1150.0" y1="374.0" x2="1157.0" y2="360.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1150.0" y1="374.0" x2="1143.0" y2="360.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="1150.0" cy="380.0" r="4.5" fill="#F8FAFC" stroke="#047857" stroke-width="1.8"/>
+    <polyline points="1060.0,187.0 910.0,187.0" fill="none" stroke="#047857" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="1052.0" y1="180.0" x2="1052.0" y2="194.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1045.0" y1="180.0" x2="1045.0" y2="194.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="924.0" y1="187.0" x2="910.0" y2="194.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="924.0" y1="187.0" x2="910.0" y2="180.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="930.0" cy="187.0" r="4.5" fill="#F8FAFC" stroke="#047857" stroke-width="1.8"/>
+    <polyline points="1270.0,360.0 1270.0,542.0" fill="none" stroke="#047857" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="1263.0" y1="368.0" x2="1277.0" y2="368.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1263.0" y1="375.0" x2="1277.0" y2="375.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1270.0" y1="528.0" x2="1277.0" y2="542.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1270.0" y1="528.0" x2="1263.0" y2="542.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1263.0" y1="527.0" x2="1277.0" y2="527.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <polyline points="1235.0,744.0 1235.0,915.0" fill="none" stroke="#047857" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="1228.0" y1="752.0" x2="1242.0" y2="752.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1228.0" y1="759.0" x2="1242.0" y2="759.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1235.0" y1="901.0" x2="1242.0" y2="915.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1235.0" y1="901.0" x2="1228.0" y2="915.0" stroke="#047857" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="1235.0" cy="895.0" r="4.5" fill="#F8FAFC" stroke="#047857" stroke-width="1.8"/>
+    <polyline points="910.0,1040.0 1060.0,1040.0" fill="none" stroke="#B45309" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="918.0" y1="1033.0" x2="918.0" y2="1047.0" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="925.0" y1="1033.0" x2="925.0" y2="1047.0" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1046.0" y1="1040.0" x2="1060.0" y2="1047.0" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="1046.0" y1="1040.0" x2="1060.0" y2="1033.0" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="1040.0" cy="1040.0" r="4.5" fill="#F8FAFC" stroke="#B45309" stroke-width="1.8"/>
+    <polyline points="410.0,643.0 560.0,643.0" fill="none" stroke="#BE123C" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="418.0" y1="636.0" x2="418.0" y2="650.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="425.0" y1="636.0" x2="425.0" y2="650.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="546.0" y1="643.0" x2="560.0" y2="650.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="546.0" y1="643.0" x2="560.0" y2="636.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="540.0" cy="643.0" r="4.5" fill="#F8FAFC" stroke="#BE123C" stroke-width="1.8"/>
+    <polyline points="1060.0,643.0 910.0,643.0" fill="none" stroke="#BE123C" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="1052.0" y1="636.0" x2="1052.0" y2="650.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="1043.0" cy="643.0" r="4.5" fill="#F8FAFC" stroke="#BE123C" stroke-width="1.8"/>
+    <line x1="924.0" y1="643.0" x2="910.0" y2="650.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="924.0" y1="643.0" x2="910.0" y2="636.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="930.0" cy="643.0" r="4.5" fill="#F8FAFC" stroke="#BE123C" stroke-width="1.8"/>
+    <polyline points="650.0,756.0 650.0,848.0 235.0,848.0 235.0,915.0" fill="none" stroke="#BE123C" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="643.0" y1="764.0" x2="657.0" y2="764.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="643.0" y1="771.0" x2="657.0" y2="771.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="235.0" y1="901.0" x2="242.0" y2="915.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="235.0" y1="901.0" x2="228.0" y2="915.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="228.0" y1="900.0" x2="242.0" y2="900.0" stroke="#BE123C" stroke-width="1.8" stroke-linecap="round"/>
+    <polyline points="560.0,1040.0 410.0,1040.0" fill="none" stroke="#B45309" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>
+    <line x1="552.0" y1="1033.0" x2="552.0" y2="1047.0" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="545.0" y1="1033.0" x2="545.0" y2="1047.0" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="424.0" y1="1040.0" x2="410.0" y2="1047.0" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="424.0" y1="1040.0" x2="410.0" y2="1033.0" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="430.0" cy="1040.0" r="4.5" fill="#F8FAFC" stroke="#B45309" stroke-width="1.8"/>
+  </g>
+
+  <!-- Entity Cards -->
+  <g id="table-profiles" filter="url(#card-shadow)">
+    <rect x="60" y="110" width="350" height="274" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+    <path d="M 70 110 H 400 Q 410 110 410 120 V 158 H 60 V 120 Q 60 110 70 110 Z" fill="#4338CA"/>
+    <text x="74" y="132" font-size="14" font-weight="700" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">profiles</text>
+    <text x="74" y="149" font-size="10.5" font-weight="500" fill="#E2E8F0">1:1 User Fitness Profile</text>
+    <rect x="70" y="163" width="24" height="14" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="82" y="173" text-anchor="middle" font-size="8.5" font-weight="700" fill="#B45309">PK</text>
+    <rect x="97" y="163" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="109" y="173" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <text x="128" y="174" font-size="11.5" font-weight="700" fill="#0F172A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">user_id</text>
+    <text x="368" y="174" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="400" y="174" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="61" y="182" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="182" x2="409" y2="182" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="198" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">avatar_url</text>
+    <text x="368" y="198" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <line x1="61" y1="206" x2="409" y2="206" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="222" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">bio</text>
+    <text x="368" y="222" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <rect x="61" y="230" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="230" x2="409" y2="230" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="246" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">height_cm</text>
+    <text x="368" y="246" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">NUMERIC(5,2)</text>
+    <text x="400" y="246" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="61" y1="254" x2="409" y2="254" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="270" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">weight_kg</text>
+    <text x="368" y="270" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">NUMERIC(5,2)</text>
+    <text x="400" y="270" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="61" y="278" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="278" x2="409" y2="278" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="294" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">fitness_goal</text>
+    <text x="368" y="294" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="400" y="294" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="61" y1="302" x2="409" y2="302" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="318" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">experience_level</text>
+    <text x="368" y="318" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="400" y="318" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="61" y="326" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="326" x2="409" y2="326" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="342" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">created_at</text>
+    <text x="368" y="342" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMPTZ</text>
+    <text x="400" y="342" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="61" y1="350" x2="409" y2="350" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="366" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">updated_at</text>
+    <text x="368" y="366" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMPTZ</text>
+    <text x="400" y="366" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+  </g>
+  <g id="table-user_active_programs" filter="url(#card-shadow)">
+    <rect x="560" y="110" width="350" height="154" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+    <path d="M 570 110 H 900 Q 910 110 910 120 V 158 H 560 V 120 Q 560 110 570 110 Z" fill="#047857"/>
+    <text x="574" y="132" font-size="14" font-weight="700" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">user_active_programs</text>
+    <text x="574" y="149" font-size="10.5" font-weight="500" fill="#E2E8F0">Active Program Assignment</text>
+    <rect x="570" y="163" width="24" height="14" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="582" y="173" text-anchor="middle" font-size="8.5" font-weight="700" fill="#B45309">PK</text>
+    <text x="628" y="174" font-size="11.5" font-weight="700" fill="#0F172A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">id</text>
+    <text x="868" y="174" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="900" y="174" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="561" y="182" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="561" y1="182" x2="909" y2="182" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="570" y="187" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="582" y="197" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <rect x="597" y="187" width="24" height="14" rx="3" fill="#F3E8FF" stroke="#C084FC" stroke-width="0.8"/>
+    <text x="609" y="197" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7E22CE">UK</text>
+    <text x="628" y="198" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">user_id</text>
+    <text x="868" y="198" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="900" y="198" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="561" y1="206" x2="909" y2="206" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="570" y="211" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="582" y="221" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <text x="628" y="222" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">program_id</text>
+    <text x="868" y="222" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="900" y="222" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="561" y="230" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="561" y1="230" x2="909" y2="230" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="246" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">started_at</text>
+    <text x="868" y="246" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMPTZ</text>
+    <text x="900" y="246" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+  </g>
+  <g id="table-workout_programs" filter="url(#card-shadow)">
+    <rect x="1060" y="110" width="350" height="250" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+    <path d="M 1070 110 H 1400 Q 1410 110 1410 120 V 158 H 1060 V 120 Q 1060 110 1070 110 Z" fill="#047857"/>
+    <text x="1074" y="132" font-size="14" font-weight="700" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">workout_programs</text>
+    <text x="1074" y="149" font-size="10.5" font-weight="500" fill="#E2E8F0">Default &amp; Custom Splits</text>
+    <rect x="1070" y="163" width="24" height="14" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="1082" y="173" text-anchor="middle" font-size="8.5" font-weight="700" fill="#B45309">PK</text>
+    <text x="1128" y="174" font-size="11.5" font-weight="700" fill="#0F172A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">id</text>
+    <text x="1368" y="174" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="1400" y="174" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="1061" y="182" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="182" x2="1409" y2="182" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="198" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">title</text>
+    <text x="1368" y="198" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="1400" y="198" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="1061" y1="206" x2="1409" y2="206" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="222" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">description</text>
+    <text x="1368" y="222" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <rect x="1061" y="230" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="230" x2="1409" y2="230" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="246" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">days_per_week</text>
+    <text x="1368" y="246" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">INTEGER</text>
+    <text x="1400" y="246" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="1061" y1="254" x2="1409" y2="254" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="270" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">is_default</text>
+    <text x="1368" y="270" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">BOOLEAN</text>
+    <text x="1400" y="270" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="1061" y="278" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="278" x2="1409" y2="278" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="1070" y="283" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="1082" y="293" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <text x="1128" y="294" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">user_id</text>
+    <text x="1368" y="294" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="1400" y="294" text-anchor="end" font-size="9" font-weight="600" fill="#94A3B8">NULL</text>
+    <line x1="1061" y1="302" x2="1409" y2="302" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="318" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">created_at</text>
+    <text x="1368" y="318" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMPTZ</text>
+    <text x="1400" y="318" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="1061" y="326" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="326" x2="1409" y2="326" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="342" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">updated_at</text>
+    <text x="1368" y="342" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMPTZ</text>
+    <text x="1400" y="342" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+  </g>
+  <g id="table-users" filter="url(#card-shadow)">
+    <rect x="60" y="490" width="350" height="298" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+    <path d="M 70 490 H 400 Q 410 490 410 500 V 538 H 60 V 500 Q 60 490 70 490 Z" fill="#4338CA"/>
+    <text x="74" y="512" font-size="14" font-weight="700" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">users</text>
+    <text x="74" y="529" font-size="10.5" font-weight="500" fill="#E2E8F0">Account &amp; Auth Credentials</text>
+    <rect x="70" y="543" width="24" height="14" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="82" y="553" text-anchor="middle" font-size="8.5" font-weight="700" fill="#B45309">PK</text>
+    <text x="128" y="554" font-size="11.5" font-weight="700" fill="#0F172A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">id</text>
+    <text x="368" y="554" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="400" y="554" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="61" y="562" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="562" x2="409" y2="562" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="70" y="567" width="24" height="14" rx="3" fill="#F3E8FF" stroke="#C084FC" stroke-width="0.8"/>
+    <text x="82" y="577" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7E22CE">UK</text>
+    <text x="128" y="578" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">username</text>
+    <text x="368" y="578" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">VARCHAR(30)</text>
+    <text x="400" y="578" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="61" y1="586" x2="409" y2="586" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="70" y="591" width="24" height="14" rx="3" fill="#F3E8FF" stroke="#C084FC" stroke-width="0.8"/>
+    <text x="82" y="601" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7E22CE">UK</text>
+    <text x="128" y="602" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">email</text>
+    <text x="368" y="602" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">VARCHAR(255)</text>
+    <text x="400" y="602" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="61" y="610" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="610" x2="409" y2="610" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="626" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">password_hash</text>
+    <text x="368" y="626" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="400" y="626" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="61" y1="634" x2="409" y2="634" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="650" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">name</text>
+    <text x="368" y="650" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">VARCHAR(100)</text>
+    <rect x="61" y="658" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="658" x2="409" y2="658" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="674" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">created_at</text>
+    <text x="368" y="674" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMP</text>
+    <text x="400" y="674" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="61" y1="682" x2="409" y2="682" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="698" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">last_login_at</text>
+    <text x="368" y="698" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMP</text>
+    <rect x="61" y="706" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="706" x2="409" y2="706" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="722" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">email_verified_at</text>
+    <text x="368" y="722" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMP</text>
+    <line x1="61" y1="730" x2="409" y2="730" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="746" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">followers_count</text>
+    <text x="368" y="746" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">INTEGER</text>
+    <text x="400" y="746" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="61" y="754" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="754" x2="409" y2="754" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="770" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">following_count</text>
+    <text x="368" y="770" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">INTEGER</text>
+    <text x="400" y="770" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+  </g>
+  <g id="table-workout_logs" filter="url(#card-shadow)">
+    <rect x="560" y="530" width="350" height="226" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+    <path d="M 570 530 H 900 Q 910 530 910 540 V 578 H 560 V 540 Q 560 530 570 530 Z" fill="#BE123C"/>
+    <text x="574" y="552" font-size="14" font-weight="700" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">workout_logs</text>
+    <text x="574" y="569" font-size="10.5" font-weight="500" fill="#E2E8F0">Completed Workout Sessions</text>
+    <rect x="570" y="583" width="24" height="14" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="582" y="593" text-anchor="middle" font-size="8.5" font-weight="700" fill="#B45309">PK</text>
+    <text x="628" y="594" font-size="11.5" font-weight="700" fill="#0F172A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">id</text>
+    <text x="868" y="594" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="900" y="594" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="561" y="602" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="561" y1="602" x2="909" y2="602" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="570" y="607" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="582" y="617" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <text x="628" y="618" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">user_id</text>
+    <text x="868" y="618" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="900" y="618" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="561" y1="626" x2="909" y2="626" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="570" y="631" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="582" y="641" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <text x="628" y="642" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">program_day_id</text>
+    <text x="868" y="642" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="900" y="642" text-anchor="end" font-size="9" font-weight="600" fill="#94A3B8">NULL</text>
+    <rect x="561" y="650" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="561" y1="650" x2="909" y2="650" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="666" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">title</text>
+    <text x="868" y="666" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="900" y="666" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="561" y1="674" x2="909" y2="674" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="690" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">duration_minutes</text>
+    <text x="868" y="690" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">INTEGER</text>
+    <rect x="561" y="698" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="561" y1="698" x2="909" y2="698" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="714" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">notes</text>
+    <text x="868" y="714" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <line x1="561" y1="722" x2="909" y2="722" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="738" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">completed_at</text>
+    <text x="868" y="738" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMPTZ</text>
+    <text x="900" y="738" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+  </g>
+  <g id="table-program_days" filter="url(#card-shadow)">
+    <rect x="1060" y="542" width="350" height="202" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+    <path d="M 1070 542 H 1400 Q 1410 542 1410 552 V 590 H 1060 V 552 Q 1060 542 1070 542 Z" fill="#047857"/>
+    <text x="1074" y="564" font-size="14" font-weight="700" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">program_days</text>
+    <text x="1074" y="581" font-size="10.5" font-weight="500" fill="#E2E8F0">Training Days per Split</text>
+    <rect x="1070" y="595" width="24" height="14" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="1082" y="605" text-anchor="middle" font-size="8.5" font-weight="700" fill="#B45309">PK</text>
+    <text x="1128" y="606" font-size="11.5" font-weight="700" fill="#0F172A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">id</text>
+    <text x="1368" y="606" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="1400" y="606" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="1061" y="614" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="614" x2="1409" y2="614" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="1070" y="619" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="1082" y="629" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <rect x="1097" y="619" width="24" height="14" rx="3" fill="#F3E8FF" stroke="#C084FC" stroke-width="0.8"/>
+    <text x="1109" y="629" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7E22CE">UK</text>
+    <text x="1128" y="630" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">program_id</text>
+    <text x="1368" y="630" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="1400" y="630" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="1061" y1="638" x2="1409" y2="638" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="1070" y="643" width="24" height="14" rx="3" fill="#F3E8FF" stroke="#C084FC" stroke-width="0.8"/>
+    <text x="1082" y="653" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7E22CE">UK</text>
+    <text x="1128" y="654" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">day_number</text>
+    <text x="1368" y="654" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">INTEGER</text>
+    <text x="1400" y="654" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="1061" y="662" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="662" x2="1409" y2="662" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="678" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">day_name</text>
+    <text x="1368" y="678" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="1400" y="678" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="1061" y1="686" x2="1409" y2="686" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="702" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">focus</text>
+    <text x="1368" y="702" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="1400" y="702" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="1061" y="710" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="710" x2="1409" y2="710" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="726" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">created_at</text>
+    <text x="1368" y="726" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMPTZ</text>
+    <text x="1400" y="726" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+  </g>
+  <g id="table-workout_sets" filter="url(#card-shadow)">
+    <rect x="60" y="915" width="350" height="250" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+    <path d="M 70 915 H 400 Q 410 915 410 925 V 963 H 60 V 925 Q 60 915 70 915 Z" fill="#BE123C"/>
+    <text x="74" y="937" font-size="14" font-weight="700" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">workout_sets</text>
+    <text x="74" y="954" font-size="10.5" font-weight="500" fill="#E2E8F0">Logged Sets per Session</text>
+    <rect x="70" y="968" width="24" height="14" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="82" y="978" text-anchor="middle" font-size="8.5" font-weight="700" fill="#B45309">PK</text>
+    <text x="128" y="979" font-size="11.5" font-weight="700" fill="#0F172A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">id</text>
+    <text x="368" y="979" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="400" y="979" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="61" y="987" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="987" x2="409" y2="987" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="70" y="992" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="82" y="1002" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <text x="128" y="1003" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">workout_log_id</text>
+    <text x="368" y="1003" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="400" y="1003" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="61" y1="1011" x2="409" y2="1011" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="70" y="1016" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="82" y="1026" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <text x="128" y="1027" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">exercise_id</text>
+    <text x="368" y="1027" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="400" y="1027" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="61" y="1035" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="1035" x2="409" y2="1035" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="1051" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">set_number</text>
+    <text x="368" y="1051" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">INTEGER</text>
+    <text x="400" y="1051" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="61" y1="1059" x2="409" y2="1059" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="1075" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">reps</text>
+    <text x="368" y="1075" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">INTEGER</text>
+    <text x="400" y="1075" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="61" y="1083" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="1083" x2="409" y2="1083" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="1099" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">weight_kg</text>
+    <text x="368" y="1099" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">NUMERIC(6,2)</text>
+    <text x="400" y="1099" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="61" y1="1107" x2="409" y2="1107" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="1123" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">rpe</text>
+    <text x="368" y="1123" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">NUMERIC(3,1)</text>
+    <rect x="61" y="1131" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="61" y1="1131" x2="409" y2="1131" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="128" y="1147" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">created_at</text>
+    <text x="368" y="1147" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TIMESTAMPTZ</text>
+    <text x="400" y="1147" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+  </g>
+  <g id="table-exercises" filter="url(#card-shadow)">
+    <rect x="560" y="927" width="350" height="226" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+    <path d="M 570 927 H 900 Q 910 927 910 937 V 975 H 560 V 937 Q 560 927 570 927 Z" fill="#B45309"/>
+    <text x="574" y="949" font-size="14" font-weight="700" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">exercises</text>
+    <text x="574" y="966" font-size="10.5" font-weight="500" fill="#E2E8F0">Exercise Catalog &amp; Media</text>
+    <rect x="570" y="980" width="24" height="14" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="582" y="990" text-anchor="middle" font-size="8.5" font-weight="700" fill="#B45309">PK</text>
+    <text x="628" y="991" font-size="11.5" font-weight="700" fill="#0F172A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">id</text>
+    <text x="868" y="991" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="900" y="991" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="561" y="999" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="561" y1="999" x2="909" y2="999" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="1015" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">name</text>
+    <text x="868" y="1015" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="900" y="1015" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="561" y1="1023" x2="909" y2="1023" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="1039" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">body_part</text>
+    <text x="868" y="1039" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="900" y="1039" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="561" y="1047" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="561" y1="1047" x2="909" y2="1047" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="1063" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">target_muscles</text>
+    <text x="868" y="1063" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT[]</text>
+    <text x="900" y="1063" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="561" y1="1071" x2="909" y2="1071" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="1087" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">equipment</text>
+    <text x="868" y="1087" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <rect x="561" y="1095" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="561" y1="1095" x2="909" y2="1095" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="1111" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">gif_url</text>
+    <text x="868" y="1111" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <line x1="561" y1="1119" x2="909" y2="1119" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="628" y="1135" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">image_url</text>
+    <text x="868" y="1135" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+  </g>
+  <g id="table-program_day_exercises" filter="url(#card-shadow)">
+    <rect x="1060" y="915" width="350" height="250" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+    <path d="M 1070 915 H 1400 Q 1410 915 1410 925 V 963 H 1060 V 925 Q 1060 915 1070 915 Z" fill="#047857"/>
+    <text x="1074" y="937" font-size="14" font-weight="700" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">program_day_exercises</text>
+    <text x="1074" y="954" font-size="10.5" font-weight="500" fill="#E2E8F0">Day-to-Exercise Prescription</text>
+    <rect x="1070" y="968" width="24" height="14" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="1082" y="978" text-anchor="middle" font-size="8.5" font-weight="700" fill="#B45309">PK</text>
+    <text x="1128" y="979" font-size="11.5" font-weight="700" fill="#0F172A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">id</text>
+    <text x="1368" y="979" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="1400" y="979" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="1061" y="987" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="987" x2="1409" y2="987" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="1070" y="992" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="1082" y="1002" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <rect x="1097" y="992" width="24" height="14" rx="3" fill="#F3E8FF" stroke="#C084FC" stroke-width="0.8"/>
+    <text x="1109" y="1002" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7E22CE">UK</text>
+    <text x="1128" y="1003" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">program_day_id</text>
+    <text x="1368" y="1003" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">UUID</text>
+    <text x="1400" y="1003" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="1061" y1="1011" x2="1409" y2="1011" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="1070" y="1016" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="1082" y="1026" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <text x="1128" y="1027" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">exercise_id</text>
+    <text x="1368" y="1027" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="1400" y="1027" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="1061" y="1035" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="1035" x2="1409" y2="1035" stroke="#E2E8F0" stroke-width="0.7"/>
+    <rect x="1070" y="1040" width="24" height="14" rx="3" fill="#F3E8FF" stroke="#C084FC" stroke-width="0.8"/>
+    <text x="1082" y="1050" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7E22CE">UK</text>
+    <text x="1128" y="1051" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">order_index</text>
+    <text x="1368" y="1051" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">INTEGER</text>
+    <text x="1400" y="1051" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="1061" y1="1059" x2="1409" y2="1059" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="1075" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">target_sets</text>
+    <text x="1368" y="1075" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">INTEGER</text>
+    <text x="1400" y="1075" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="1061" y="1083" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="1083" x2="1409" y2="1083" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="1099" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">target_reps</text>
+    <text x="1368" y="1099" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+    <text x="1400" y="1099" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <line x1="1061" y1="1107" x2="1409" y2="1107" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="1123" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">rest_seconds</text>
+    <text x="1368" y="1123" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">INTEGER</text>
+    <text x="1400" y="1123" text-anchor="end" font-size="9" font-weight="600" fill="#475569">NN</text>
+    <rect x="1061" y="1131" width="348" height="24" fill="#F8FAFC"/>
+    <line x1="1061" y1="1131" x2="1409" y2="1131" stroke="#E2E8F0" stroke-width="0.7"/>
+    <text x="1128" y="1147" font-size="11.5" font-weight="500" fill="#1E293B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">notes</text>
+    <text x="1368" y="1147" text-anchor="end" font-size="10.5" fill="#64748B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">TEXT</text>
+  </g>
+
+  <!-- Relationship Labels -->
+  <g id="relationship-labels">
+    <g class="rel-label"><rect x="157.8" y="427.0" width="154.5" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="235.0" y="441.0" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">1 : 0..1  has profile</text></g>
+    <g class="rel-label"><rect x="459.5" y="405.0" width="161.0" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="540.0" y="419.0" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">1 : 0..1  active split</text></g>
+    <g class="rel-label"><rect x="743.2" y="448.0" width="193.5" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="840.0" y="462.0" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">0..1 : 0..*  creates custom</text></g>
+    <g class="rel-label"><rect x="914.2" y="159.0" width="141.5" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="985.0" y="173.0" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">1 : 0..*  activated</text></g>
+    <g class="rel-label"><rect x="1186.2" y="453.0" width="167.5" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="1270.0" y="467.0" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">1 : 1..*  contains days</text></g>
+    <g class="rel-label"><rect x="1161.0" y="819.5" width="148.0" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="1235.0" y="833.5" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">1 : 0..*  prescribes</text></g>
+    <g class="rel-label"><rect x="911.0" y="1012.0" width="148.0" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="985.0" y="1026.0" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">1 : 0..*  referenced</text></g>
+    <g class="rel-label"><rect x="430.5" y="615.0" width="109.0" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="485.0" y="629.0" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">1 : 0..*  logs</text></g>
+    <g class="rel-label"><rect x="901.2" y="615.0" width="167.5" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="985.0" y="629.0" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">0..1 : 0..*  tracks day</text></g>
+    <g class="rel-label"><rect x="369.5" y="838.0" width="161.0" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="450.0" y="852.0" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">1 : 1..*  records sets</text></g>
+    <g class="rel-label"><rect x="414.2" y="1012.0" width="141.5" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/><text x="485.0" y="1026.0" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">1 : 0..*  performed</text></g>
+  </g>
+
+  <!-- Notation Legend -->
+  <g id="legend" transform="translate(60, 1205)">
+    <rect x="0" y="0" width="1350" height="56" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+    <text x="18" y="23" font-size="11.5" font-weight="700" fill="#0F172A">KEY &amp; CARDINALITY LEGEND</text>
+
+    <!-- Key badges -->
+    <rect x="18" y="32" width="24" height="14" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="30" y="42" text-anchor="middle" font-size="8.5" font-weight="700" fill="#B45309">PK</text>
+    <text x="48" y="42" font-size="10.5" fill="#475569">Primary Key</text>
+
+    <rect x="128" y="32" width="24" height="14" rx="3" fill="#DBEAFE" stroke="#60A5FA" stroke-width="0.8"/>
+    <text x="140" y="42" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1D4ED8">FK</text>
+    <text x="158" y="42" font-size="10.5" fill="#475569">Foreign Key</text>
+
+    <rect x="238" y="32" width="24" height="14" rx="3" fill="#F3E8FF" stroke="#C084FC" stroke-width="0.8"/>
+    <text x="250" y="42" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7E22CE">UK</text>
+    <text x="268" y="42" font-size="10.5" fill="#475569">Unique Constraint</text>
+
+    <text x="382" y="42" font-size="10.5" fill="#475569"><tspan font-weight="700">NN</tspan> = NOT NULL   ·   <tspan font-weight="700" fill="#94A3B8">NULL</tspan> = Nullable FK</text>
+
+    <!-- Crow's-foot legend glyphs -->
+    <g transform="translate(650, 38)">
+      <line x1="0" y1="0" x2="36" y2="0" stroke="#334155" stroke-width="1.8"/>
+      <line x1="8.0" y1="-7.0" x2="8.0" y2="7.0" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="15.0" y1="-7.0" x2="15.0" y2="7.0" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
+      <text x="44" y="4" font-size="10.5" fill="#334155">1 (Mandatory One)</text>
+    </g>
+    <g transform="translate(820, 38)">
+      <line x1="0" y1="0" x2="36" y2="0" stroke="#334155" stroke-width="1.8"/>
+      <line x1="8.0" y1="-7.0" x2="8.0" y2="7.0" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="17.0" cy="0.0" r="4.5" fill="#F8FAFC" stroke="#334155" stroke-width="1.8"/>
+      <text x="44" y="4" font-size="10.5" fill="#334155">0..1 (Optional One)</text>
+    </g>
+    <g transform="translate(995, 38)">
+      <line x1="0" y1="0" x2="36" y2="0" stroke="#334155" stroke-width="1.8"/>
+      <line x1="14.0" y1="0.0" x2="0.0" y2="7.0" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="14.0" y1="0.0" x2="0.0" y2="-7.0" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="15.0" y1="-7.0" x2="15.0" y2="7.0" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
+      <text x="44" y="4" font-size="10.5" fill="#334155">1..* (One or Many)</text>
+    </g>
+    <g transform="translate(1165, 38)">
+      <line x1="0" y1="0" x2="36" y2="0" stroke="#334155" stroke-width="1.8"/>
+      <line x1="14.0" y1="0.0" x2="0.0" y2="7.0" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="14.0" y1="0.0" x2="0.0" y2="-7.0" stroke="#334155" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="20.0" cy="0.0" r="4.5" fill="#F8FAFC" stroke="#334155" stroke-width="1.8"/>
+      <text x="44" y="4" font-size="10.5" fill="#334155">0..* (Zero or Many)</text>
+    </g>
+  </g>
+</svg>
