@@ -8,14 +8,9 @@ import {
   LogOut,
   Flame,
 } from 'lucide-react'
-<<<<<<< HEAD
 import { useQueryClient } from '@tanstack/react-query'
 import { useAuthStore } from '../../store/authStore'
 import api, { clearAuthToken } from '../../lib/api'
-=======
-import { useAuthStore } from '../../store/authStore'
-import api from '../../lib/api'
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
 import ThemeToggle from '../ui/ThemeToggle'
 
 const NAV_ITEMS = [
@@ -28,10 +23,10 @@ const NAV_ITEMS = [
 
 export default function Sidebar() {
   const navigate = useNavigate()
-<<<<<<< HEAD
+
   const queryClient = useQueryClient()
-=======
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
+
+
   const { user, profile, logout } = useAuthStore()
 
   const handleLogout = async () => {
@@ -40,12 +35,8 @@ export default function Sidebar() {
     } catch (e) {
       console.error('Logout error:', e)
     } finally {
-<<<<<<< HEAD
       clearAuthToken()
       queryClient.clear()
-=======
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
-      logout()
       navigate('/login')
     }
   }
@@ -55,20 +46,12 @@ export default function Sidebar() {
       {/* Brand Header */}
       <div className="flex items-center justify-between px-6 py-5 border-b border-zinc-200/80 dark:border-zinc-800/80">
         <div className="flex items-center gap-3">
-<<<<<<< HEAD
           <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-500 shadow-sm shadow-orange-500/10">
-=======
-          <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-500 shadow-lg shadow-orange-500/25">
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
             <Flame className="w-6 h-6 text-orange-500 fill-orange-500" />
           </div>
           <div>
             <span className="font-extrabold text-lg tracking-tight text-zinc-900 dark:text-white block">
-<<<<<<< HEAD
               Wannabe<span className="text-orange-500">Lyfta</span>
-=======
-              Lift<span className="text-orange-500">ly</span>
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
             </span>
             <span className="text-[10px] text-zinc-500 dark:text-zinc-400 uppercase tracking-widest font-bold block">
               Workout Tracker
@@ -87,17 +70,10 @@ export default function Sidebar() {
             to={to}
             end={to === '/'}
             className={({ isActive }) =>
-<<<<<<< HEAD
               `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                 isActive
                   ? 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-l-4 border-orange-500 font-bold'
                   : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/60'
-=======
-              `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
-                isActive
-                  ? 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-l-4 border-orange-500 font-bold shadow-[0_0_26px_-14px_rgba(var(--accent-glow),1)]'
-                  : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 hover:translate-x-0.5'
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
               }`
             }
           >
@@ -110,11 +86,7 @@ export default function Sidebar() {
       {/* User Info & Logout Footer */}
       <div className="p-4 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-900/60">
         <div className="flex items-center gap-3 mb-3">
-<<<<<<< HEAD
           <div className="w-9 h-9 rounded-full bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-orange-600 dark:text-orange-400 font-bold text-sm overflow-hidden">
-=======
-          <div className="w-9 h-9 rounded-full bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-orange-600 dark:text-orange-400 font-bold text-sm overflow-hidden ring-2 ring-orange-500/20">
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
             {profile?.avatar_url ? (
               <img
                 src={profile.avatar_url}

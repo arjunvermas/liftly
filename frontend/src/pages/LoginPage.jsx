@@ -56,11 +56,7 @@ export default function LoginPage() {
   }
 
   return (
-<<<<<<< HEAD
     <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center px-4 py-8 relative transition-colors">
-=======
-    <div className="auth-shell min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center px-4 py-8 relative transition-colors">
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>
@@ -68,30 +64,18 @@ export default function LoginPage() {
       <div className="w-full max-w-sm space-y-6">
         {/* Logo */}
         <div className="flex flex-col items-center">
-<<<<<<< HEAD
           <div className="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-500 mb-3 shadow-md shadow-orange-500/10">
             <Flame className="w-7 h-7 text-orange-500 fill-orange-500" />
           </div>
           <h1 className="text-2xl font-black text-zinc-900 dark:text-white tracking-tight">
             Wannabe<span className="text-orange-500">Lyfta</span>
-=======
-          <div className="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-500 mb-3 shadow-lg shadow-orange-500/25">
-            <Flame className="w-7 h-7 text-orange-500 fill-orange-500" />
-          </div>
-          <h1 className="text-2xl font-black text-zinc-900 dark:text-white tracking-tight">
-            Lift<span className="text-orange-500">ly</span>
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
           </h1>
           <p className="text-zinc-500 dark:text-zinc-400 text-xs mt-1 font-semibold uppercase tracking-wider">
             Your fitness gains start here
           </p>
         </div>
 
-<<<<<<< HEAD
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-7 shadow-xl space-y-5 transition-colors">
-=======
-        <div className="bg-white dark:bg-zinc-900/80 backdrop-blur-sm border border-zinc-200 dark:border-zinc-800 rounded-3xl p-7 shadow-xl dark:shadow-[0_24px_60px_-30px_rgba(var(--accent-glow),0.55)] space-y-5 transition-all">
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
           <h2 className="text-base font-bold text-zinc-900 dark:text-white">
             Sign in to your account
           </h2>
@@ -168,11 +152,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-<<<<<<< HEAD
               className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold py-3 rounded-xl text-sm transition-all shadow-md shadow-orange-500/20"
-=======
-              className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold py-3 rounded-xl text-sm transition-all shadow-lg shadow-orange-500/30 hover:shadow-orange-500/40 active:scale-[0.99]"
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
             >
               {loading ? 'Signing in…' : 'Sign In'}
             </button>

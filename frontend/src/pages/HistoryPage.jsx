@@ -155,11 +155,7 @@ export default function HistoryPage() {
           {[...Array(4)].map((_, i) => (
             <div key={i} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-5 animate-pulse shadow-sm">
               <div className="h-4 bg-zinc-200 dark:bg-zinc-800 rounded w-1/3 mb-3" />
-<<<<<<< HEAD
               <div className="h-3 bg-zinc-100 dark:bg-zinc-850 rounded w-1/4" />
-=======
-              <div className="h-3 bg-zinc-100 dark:bg-zinc-800 rounded w-1/4" />
->>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
             </div>
           ))}
         </div>
