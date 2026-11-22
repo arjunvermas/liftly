@@ -8,7 +8,7 @@ export default defineConfig({
     port: 5174,
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://liftly-3typ.onrender.com',
         changeOrigin: true,
       },
     },

@@ -54,13 +54,11 @@ export default function OAuthCallbackPage() {
         setAuth(user, profile)
       }
 
-      // Verify the newly issued session before navigating to protected routes.
-      const { data: meData } = await api.get('/auth/me')
-      if (meData?.data) {
-        setAuth(meData.data, meData.profile || profile)
-      }
+      // OAuth and `/me` both establish the same user session.
+      // Set it immediately, then refresh `/me` from the dashboard.
 
       // Invalidate queries so dashboard data is immediately fresh
+      queryClient.invalidateQueries(['user.me'])
       queryClient.invalidateQueries({ queryKey: ['me'] })
       queryClient.invalidateQueries({ queryKey: ['activeProgram'] })
 

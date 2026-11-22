@@ -522,8 +522,12 @@ async function googleAuth(req, res) {
             profile: profile || null,
         });
     } catch (err) {
-        console.error("Google Auth Error:", err.message);
-        return res.status(401).json({ message: "Invalid or expired Appwrite session" });
+        console.error("Google Auth Error:", err);
+        return res.status(401).json({
+            message: err?.message || "Invalid or expired Appwrite session",
+            type: err?.type || null,
+            code: err?.code || 401,
+        });
     }
 }
 
