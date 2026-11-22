@@ -1,3 +1,21 @@
+node_modules/
+
+.env
+.env.*
+
+!.env.example
+
+.DS_Store
+
+dist/
+build/
+
 backend/node_modules/
 backend/.env
+<<<<<<< HEAD
 fontend/node_modules/
+=======
+
+frontend/node_modules/
+frontend/dist/
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31

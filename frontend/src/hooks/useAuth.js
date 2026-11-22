@@ -27,11 +27,19 @@ export function useAuth() {
     if (!queryLoading) {
       if (data?.data) {
         setAuth(data.data, data.profile || null)
+<<<<<<< HEAD
       } else if (!isAuthenticated) {
         logout()
       }
     }
   }, [data, queryLoading, isError, isAuthenticated])
+=======
+      } else {
+        logout()
+      }
+    }
+  }, [data, queryLoading, isError])
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
 
   return { user, profile, isLoading: queryLoading, isAuthenticated }
 }

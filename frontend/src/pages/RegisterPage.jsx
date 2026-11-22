@@ -124,7 +124,11 @@ export default function RegisterPage() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center px-4 py-8 relative transition-colors">
+=======
+    <div className="auth-shell min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center px-4 py-8 relative transition-colors">
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>
@@ -136,7 +140,11 @@ export default function RegisterPage() {
             <Flame className="w-7 h-7 text-orange-500 fill-orange-500" />
           </div>
           <h1 className="text-2xl font-black text-zinc-900 dark:text-white tracking-tight">
+<<<<<<< HEAD
             Join Wannabe<span className="text-orange-500">Lyfta</span>
+=======
+            Join Lift<span className="text-orange-500">ly</span>
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
           </h1>
           <p className="text-zinc-500 dark:text-zinc-400 text-xs mt-1 font-semibold uppercase tracking-wider">
             Step {step} of 2 • {step === 1 ? 'Account Setup' : 'Fitness Goals'}

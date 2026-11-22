@@ -23,11 +23,25 @@ export default function OAuthCallbackPage() {
       const userId = urlParams.get('userId')
       const secret = urlParams.get('secret')
 
+<<<<<<< HEAD
       // The OAuth2Session redirect has already created the Appwrite session.
       // Do not call createSession here, because recreating it can return
       // user_already_exists / 409 for an existing Appwrite account.
 
       // Step 1: Request JWT from the existing Appwrite client session
+=======
+      // Step 1: If Appwrite redirected with token credentials, create session explicitly
+      if (userId && secret) {
+        setStatusText('Finalizing authentication credentials...')
+        try {
+          await account.createSession(userId, secret)
+        } catch (sessionErr) {
+          console.warn('createSession notice:', sessionErr)
+        }
+      }
+
+      // Step 2: Request JWT from Appwrite client session
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
       setStatusText('Generating security token...')
       let jwt = null
       try {
@@ -43,7 +57,11 @@ export default function OAuthCallbackPage() {
         throw new Error('Received an empty authorization token from Appwrite.')
       }
 
+<<<<<<< HEAD
       // Step 2: Send JWT to backend for user sync & 30-day session cookie issue
+=======
+      // Step 3: Send JWT to backend for user sync & 30-day session cookie issue
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
       setStatusText('Syncing profile with database...')
       const { data } = await api.post('/auth/google', { appwriteJwt: jwt.jwt })
 
@@ -54,17 +72,24 @@ export default function OAuthCallbackPage() {
         setAuth(user, profile)
       }
 
+<<<<<<< HEAD
       // Verify the newly issued session before navigating to protected routes.
       const { data: meData } = await api.get('/auth/me')
       if (meData?.data) {
         setAuth(meData.data, meData.profile || profile)
       }
 
+=======
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
       // Invalidate queries so dashboard data is immediately fresh
       queryClient.invalidateQueries({ queryKey: ['me'] })
       queryClient.invalidateQueries({ queryKey: ['activeProgram'] })
 
+<<<<<<< HEAD
       // Step 3: Navigate to onboarding or dashboard
+=======
+      // Step 4: Navigate to onboarding or dashboard
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
       if (data.isNewUser && !data.hasProfile) {
         navigate('/onboarding', { replace: true })
       } else {
@@ -87,7 +112,11 @@ export default function OAuthCallbackPage() {
   }, [])
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center px-4 transition-colors">
+=======
+    <div className="auth-shell min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center px-4 transition-colors">
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
       <div className="w-full max-w-md bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 shadow-xl text-center space-y-6">
         {errorMsg ? (
           <div className="space-y-4">

@@ -41,7 +41,11 @@ export default function TodayWorkout({ today, currentDayNumber }) {
           </div>
 
           <button
+<<<<<<< HEAD
             onClick={() => navigate(`/workout-preview?dayId=${today.id}`)}
+=======
+            onClick={() => navigate(`/log?dayId=${today.id}`)}
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
             className="shrink-0 flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all shadow-md shadow-orange-500/20"
           >
             <Play className="w-4 h-4 fill-white" />

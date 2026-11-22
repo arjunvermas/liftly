@@ -1,17 +1,26 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAuth } from './hooks/useAuth'
+<<<<<<< HEAD
 
 // Layout & Protected Route
 import Layout from './components/layout/Layout'
 import ProtectedRoute from './components/ui/ProtectedRoute'
 
+=======
+// Layout & Protected Route
+import Layout from './components/layout/Layout'
+import ProtectedRoute from './components/ui/ProtectedRoute'
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
 // Pages
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import OnboardingPage from './pages/OnboardingPage'
 import OAuthCallbackPage from './pages/OAuthCallbackPage'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
 import DashboardPage from './pages/DashboardPage'
 import ProgramsPage from './pages/ProgramsPage'
 import CreateProgramPage from './pages/CreateProgramPage'
@@ -20,7 +29,11 @@ import ExercisesPage from './pages/ExercisesPage'
 import CreateExercisePage from './pages/CreateExercisePage'
 import HistoryPage from './pages/HistoryPage'
 import SessionDetailPage from './pages/SessionDetailPage'
+<<<<<<< HEAD
 import WorkoutPreviewPage from './pages/WorkoutPreviewPage'
+=======
+import LogWorkoutPage from './pages/LogWorkoutPage'
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
 import ProfilePage from './pages/ProfilePage'
 
 const queryClient = new QueryClient({
@@ -55,8 +68,12 @@ function AppRoutes() {
           <Route path="/exercises/new" element={<CreateExercisePage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/history/:id" element={<SessionDetailPage />} />
+<<<<<<< HEAD
           <Route path="/workout-preview" element={<WorkoutPreviewPage />} />
           <Route path="/log" element={<WorkoutPreviewPage />} />
+=======
+          <Route path="/log" element={<LogWorkoutPage />} />
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
           <Route path="/profile" element={<ProfilePage />} />
         </Route>
       </Route>

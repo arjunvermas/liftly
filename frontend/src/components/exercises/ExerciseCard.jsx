@@ -33,7 +33,11 @@ export default function ExerciseCard({ exercise }) {
       <div
         onClick={() => setModalOpen(true)}
         onMouseLeave={() => setConfirmDelete(false)}
+<<<<<<< HEAD
         className="relative group bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden flex flex-col transition-all duration-200 hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10 shadow-sm cursor-pointer select-none active:scale-[0.99]"
+=======
+        className="relative group bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/15 dark:hover:shadow-[0_22px_50px_-26px_rgba(var(--accent-glow),0.85)] shadow-sm cursor-pointer select-none active:scale-[0.99]"
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
         title="Click to view full exercise demo & details"
       >
         {/* Media area */}

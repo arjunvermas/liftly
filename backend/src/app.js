@@ -5,7 +5,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger.js");
 const { workoutRoute } = require('./routes/workout.route.js');
 const programRoutes = require('./routes/program.route.js');
-const sessionRoute = require("./routes/session.route");
+const sessionRoute = require("./routes/session.route.js");
 const cors = require("cors");
 const app = express();
 

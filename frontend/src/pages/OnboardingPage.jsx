@@ -82,7 +82,11 @@ export default function OnboardingPage() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center px-4 py-12 relative transition-colors">
+=======
+    <div className="auth-shell min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center px-4 py-12 relative transition-colors">
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>

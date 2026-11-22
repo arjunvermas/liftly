@@ -12,6 +12,7 @@ export default function GoogleAuthButton({ label = 'Continue with Google' }) {
     const redirectFailure = `${origin}/login`
 
     try {
+<<<<<<< HEAD
       // Clear an old Appwrite session before starting OAuth.
       try {
         await account.deleteSession('current')
@@ -25,6 +26,23 @@ export default function GoogleAuthButton({ label = 'Continue with Google' }) {
     } catch (err) {
       console.error('OAuth initiation failed:', err)
       setLoading(false)
+=======
+      // Use createOAuth2Token so Appwrite returns userId & secret in URL params
+      // This avoids 3rd-party cookie blocking on localhost / cross-domain
+      if (typeof account.createOAuth2Token === 'function') {
+        await account.createOAuth2Token('google', redirectSuccess, redirectFailure)
+      } else {
+        await account.createOAuth2Session('google', redirectSuccess, redirectFailure)
+      }
+    } catch (err) {
+      console.warn('createOAuth2Token fallback to createOAuth2Session:', err)
+      try {
+        await account.createOAuth2Session('google', redirectSuccess, redirectFailure)
+      } catch (fallbackErr) {
+        console.error('OAuth initiation failed:', fallbackErr)
+        setLoading(false)
+      }
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
     }
   }
 
@@ -33,7 +51,11 @@ export default function GoogleAuthButton({ label = 'Continue with Google' }) {
       type="button"
       onClick={handleGoogleAuth}
       disabled={loading}
+<<<<<<< HEAD
       className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-850 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-sm transition-all shadow-xs disabled:opacity-50"
+=======
+      className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700/70 text-zinc-800 dark:text-zinc-200 font-bold text-sm transition-all shadow-xs disabled:opacity-50"
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
     >
       {loading ? (
         <Loader2 className="w-4 h-4 animate-spin text-orange-500" />

@@ -2,6 +2,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+<<<<<<< HEAD
 @layer base {
   :root {
     color-scheme: light;
@@ -11,10 +12,103 @@
     color-scheme: dark;
   }
 
+=======
+/* ==========================================================================
+   LIFT THEME TOKENS
+   Dark  → black surfaces + neon-green accent
+   Light → white / black surfaces + shades of purple accent
+   The whole app uses the zinc neutral ramp + the orange accent ramp, so both
+   are re-pointed here and every utility class follows automatically.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* ── neutral ramp · light: white → ink black, with a violet cast ── */
+  --color-zinc-50: #faf7ff;
+  --color-zinc-100: #f3ecff;
+  --color-zinc-200: #e6d9fb;
+  --color-zinc-300: #d3c0f4;
+  --color-zinc-400: #7f7195;
+  --color-zinc-500: #645777;
+  --color-zinc-600: #4b3f5c;
+  --color-zinc-700: #332a42;
+  --color-zinc-800: #1e1826;
+  --color-zinc-850: #150f1d;
+  --color-zinc-900: #0e0a14;
+  --color-zinc-950: #08050d;
+
+  --color-slate-50: #fbf9ff;
+  --color-slate-100: #f5efff;
+  --color-slate-200: #eadffb;
+  --color-slate-300: #d9c9f6;
+
+  /* ── accent ramp · light: shades of purple ── */
+  --color-orange-50: #f7f2ff;
+  --color-orange-100: #efe4ff;
+  --color-orange-200: #ddccff;
+  --color-orange-300: #c4a7fd;
+  --color-orange-400: #9d6bff;
+  --color-orange-500: #7c3aed;
+  --color-orange-600: #6925d9;
+  --color-orange-700: #5620b4;
+  --color-orange-800: #451a8f;
+  --color-orange-900: #2f1263;
+
+  --accent-glow: 124, 58, 237;
+}
+
+html.dark {
+  color-scheme: dark;
+
+  /* ── neutral ramp · dark: pure black → bone white ── */
+  --color-zinc-50: #f4ffe2;
+  --color-zinc-100: #e6ffc2;
+  --color-zinc-200: #cdf59a;
+  --color-zinc-300: #b3e884;
+  --color-zinc-400: #a4b196;
+  --color-zinc-500: #7b8773;
+  --color-zinc-600: #586253;
+  --color-zinc-700: #2c332a;
+  --color-zinc-800: #151a13;
+  --color-zinc-850: #101310;
+  --color-zinc-900: #0a0c09;
+  --color-zinc-950: #000000;
+
+  --color-slate-50: #0a0c09;
+  --color-slate-100: #101310;
+  --color-slate-200: #1a1f18;
+  --color-slate-300: #2c332a;
+
+  /* ── accent ramp · dark: neon green ── */
+  --color-orange-50: #0e1a03;
+  --color-orange-100: #16260a;
+  --color-orange-200: #22380f;
+  --color-orange-300: #cdff8a;
+  --color-orange-400: #b9ff45;
+  --color-orange-500: #a3ff12;
+  --color-orange-600: #8ee000;
+  --color-orange-700: #6fb800;
+  --color-orange-800: #4f8700;
+  --color-orange-900: #2d4d00;
+
+  --accent-glow: 163, 255, 18;
+}
+
+/* Neon accent + white text is unreadable — flip any accent-filled surface. */
+.dark .bg-orange-500,
+.dark .bg-orange-600,
+.dark .bg-orange-700 {
+  color: #051000;
+}
+
+@layer base {
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
   * {
     box-sizing: border-box;
   }
 
+<<<<<<< HEAD
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
@@ -22,4 +116,204 @@
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #71717a44; border-radius: 3px; }
+=======
+  /* Smooth theme + hover transitions everywhere (utility classes still win) */
+  *,
+  *::before,
+  *::after {
+    transition-property: background-color, border-color, color, fill, stroke,
+      box-shadow, outline-color, text-decoration-color, opacity;
+    transition-duration: 220ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.025em;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-orange-500);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-zinc-300);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-orange-500);
+    background-clip: padding-box;
+  }
+
+  ::selection {
+    background: var(--color-orange-500);
+    color: #ffffff;
+  }
+  .dark ::selection {
+    color: #051000;
+  }
+}
+
+/* ==========================================================================
+   AMBIENCE — subtle gym-glow + grid behind the app shell
+   ========================================================================== */
+
+.app-shell,
+.auth-shell {
+  background-image:
+    radial-gradient(760px 440px at 6% -10%, rgba(124, 58, 237, 0.12), transparent 65%),
+    radial-gradient(620px 400px at 102% -6%, rgba(167, 139, 250, 0.14), transparent 62%),
+    linear-gradient(rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+  background-size: auto, auto, 46px 46px, 46px 46px;
+  background-attachment: fixed;
+}
+
+html.dark .app-shell,
+html.dark .auth-shell {
+  background-image:
+    radial-gradient(820px 480px at 4% -12%, rgba(163, 255, 18, 0.13), transparent 64%),
+    radial-gradient(700px 440px at 102% -2%, rgba(120, 255, 60, 0.08), transparent 60%),
+    linear-gradient(rgba(163, 255, 18, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(163, 255, 18, 0.04) 1px, transparent 1px);
+}
+
+/* ==========================================================================
+   ACTIVE PROGRAM HERO BANNER — purple wash in light, neon-to-smoke in dark
+   ========================================================================== */
+
+.program-banner {
+  background-image: linear-gradient(135deg, #7c3aed 0%, #6925d9 48%, #3b1078 100%);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 22px 45px -22px rgba(124, 58, 237, 0.75);
+}
+
+html.dark .program-banner {
+  background-image: linear-gradient(135deg, #a3ff12 0%, #8ee000 38%, #16240c 100%);
+  border-color: rgba(163, 255, 18, 0.45);
+  box-shadow: 0 24px 55px -24px rgba(163, 255, 18, 0.45);
+  color: #051000;
+}
+
+.program-banner .banner-title {
+  color: #ffffff;
+}
+html.dark .program-banner .banner-title {
+  color: #041000;
+}
+
+.program-banner .banner-muted {
+  color: #efe4ff;
+}
+html.dark .program-banner .banner-muted {
+  color: #0a1a02;
+}
+
+.program-banner .banner-chip {
+  background: rgba(255, 255, 255, 0.12);
+}
+html.dark .program-banner .banner-chip {
+  background: rgba(4, 16, 0, 0.14);
+}
+
+.program-banner .banner-btn {
+  background: rgba(0, 0, 0, 0.28);
+  color: #ffffff;
+}
+.program-banner .banner-btn:hover {
+  background: rgba(0, 0, 0, 0.42);
+}
+html.dark .program-banner .banner-btn {
+  background: rgba(4, 16, 0, 0.16);
+  color: #041000;
+}
+html.dark .program-banner .banner-btn:hover {
+  background: rgba(4, 16, 0, 0.26);
+}
+
+/* ==========================================================================
+   MOTION — entrance animation used by the existing `animate-in` classes
+   ========================================================================== */
+
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-in {
+  animation: enter-up 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Page content gently rises on mount */
+main > div > div {
+  animation: rise-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ==========================================================================
+   CONTROLS — accent focus glow + press feedback
+   ========================================================================== */
+
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 3px rgba(var(--accent-glow), 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+>>>>>>> 97664f3cdafb1a57997f8fa9f8872b36c2c4dd31
 }
