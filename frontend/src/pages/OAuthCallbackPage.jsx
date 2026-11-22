@@ -50,15 +50,29 @@ export default function OAuthCallbackPage() {
       const user = data.data || data.user
       const profile = data.profile || null
 
+      if (data.token) {
+        localStorage.setItem('auth_token', data.token)
+      }
+
       if (user) {
         setAuth(user, profile)
+      }
+
+      // Verify the synchronous bearer token if available; `/me` is only a
+      // consistency check, not a requirement for the already-issued session.
+      try {
+        const { data: meData } = await api.get('/auth/me')
+        if (meData?.data) {
+          setAuth(meData.data, meData.profile || profile)
+        }
+      } catch (meError) {
+        console.warn('Post-login /me verification failed:', meError)
       }
 
       // OAuth and `/me` both establish the same user session.
       // Set it immediately, then refresh `/me` from the dashboard.
 
       // Invalidate queries so dashboard data is immediately fresh
-      queryClient.invalidateQueries(['user.me'])
       queryClient.invalidateQueries({ queryKey: ['me'] })
       queryClient.invalidateQueries({ queryKey: ['activeProgram'] })
 
