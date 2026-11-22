@@ -1,123 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Google OAuth Test</title>
-  <script src="https://cdn.jsdelivr.net/npm/appwrite@16.0.2"></script>
-</head>
-<body>
-  <h2>Google OAuth + Express Cookie Test</h2>
-  <p id="status">Ready.</p>
-
-  <button onclick="loginWithGoogle()">Continue with Google</button>
-  <button onclick="checkMe()">Test GET /api/auth/me</button>
-  <button onclick="logout()">Logout</button>
-
-  <pre id="output"></pre>
-
-  <script>
-    const CONFIG = {
-      APPWRITE_ENDPOINT: "https://sgp.cloud.appwrite.io/v1",
-      APPWRITE_PROJECT_ID: "6afbcbdd0025f10fae27",
-      BACKEND_URL: "http://localhost:3000/api",
-    };
-
-    const { Client, Account, OAuthProvider } = Appwrite;
-
-    function createFreshAccount() {
-      const client = new Client()
-        .setEndpoint(CONFIG.APPWRITE_ENDPOINT)
-        .setProject(CONFIG.APPWRITE_PROJECT_ID);
-      return new Account(client);
-    }
-
-    const statusEl = document.getElementById("status");
-    const outputEl = document.getElementById("output");
-
-    function show(msg, data) {
-      statusEl.textContent = msg;
-      outputEl.textContent = data ? JSON.stringify(data, null, 2) : "";
-    }
-
-    function loginWithGoogle() {
-      const account = createFreshAccount();
-      const currentUrl = window.location.origin + window.location.pathname;
-      account.createOAuth2Token(
-        OAuthProvider.Google,
-        currentUrl,
-        currentUrl + "?oauth=failed"
-      );
-    }
-
-    async function handleOAuthRedirect() {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("oauth") === "failed") {
-        window.history.replaceState({}, "", window.location.pathname);
-        return show("Google login cancelled or failed.");
-      }
-
-      const userId = params.get("userId");
-      const secret = params.get("secret");
-      if (!userId || !secret) return;
-
-      window.history.replaceState({}, "", window.location.pathname);
-
-      try {
-        show("Creating Appwrite session & minting JWT...");
-
-        // 1. Clear any leftover session BEFORE creating the new one
-        const existingAccount = createFreshAccount();
-        await existingAccount.deleteSession("current").catch(() => {});
-        localStorage.removeItem("cookieFallback");
-
-        // 2. Create fresh session and mint JWT (keep session alive until backend verifies it)
-        const freshAccount = createFreshAccount();
-        await freshAccount.createSession(userId, secret);
-        const { jwt } = await freshAccount.createJWT();
-
-        // 3. Exchange JWT with Express backend FIRST while Appwrite session is still active
-        show("Exchanging Appwrite JWT at POST /api/auth/google...");
-        const res = await fetch(`${CONFIG.BACKEND_URL}/auth/google`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ appwriteJwt: jwt }),
-        });
-
-        const data = await res.json();
-
-        // 4. Clean up Appwrite session AFTER backend verifies JWT & sets HTTP-only cookie
-        await freshAccount.deleteSession("current").catch(() => {});
-        localStorage.removeItem("cookieFallback");
-
-        show(`Backend responded (${res.status}):`, data);
-      } catch (err) {
-        show("Error during OAuth exchange:", { error: err.message });
-      }
-    }
-
-    async function checkMe() {
-      const res = await fetch(`${CONFIG.BACKEND_URL}/auth/me`, {
-        credentials: "include",
-      });
-      const data = await res.json();
-      show(`GET /auth/me (${res.status}):`, data);
-    }
-
-    async function logout() {
-      const account = createFreshAccount();
-      await account.deleteSession("current").catch(() => {});
-      localStorage.removeItem("cookieFallback");
-
-      const res = await fetch(`${CONFIG.BACKEND_URL}/auth/logout`, {
-        method: "POST",
-        credentials: "include",
-      });
-      const data = await res.json();
-      show("Logged out:", data);
-    }
-
-    handleOAuthRedirect();
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WannabeLyfta — Workout & Program Tracker</title>
+    <meta name="description" content="Track your daily workouts, custom programs, exercises library, and volume progression." />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('wannabe_theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-slate-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 selection:bg-orange-500 selection:text-white min-h-screen transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

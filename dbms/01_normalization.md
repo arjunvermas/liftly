@@ -363,7 +363,7 @@ Under these assumptions, the determinants of the identified functional dependenc
 | 3NF | No transitive dependency | No identified violation |
 | BCNF | Every determinant must be a superkey | No identified violation under stated assumptions |
 
-## 8. Final Design Decisions
+## 8. Final Design  w
 
 We will keep the existing schema for now.
 

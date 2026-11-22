@@ -143,7 +143,8 @@ const updateProfileSchema = z
 const COOKIE_OPTIONS = {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    path: "/",
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
 };
 
@@ -235,6 +236,7 @@ async function registerUser(req, res) {
         const { password_hash, ...dataWithouthash } = data;
         return res.status(201).json({
             message: "Registered successfully",
+            token,
             data: dataWithouthash,
             profile: profileData,
         });
@@ -287,6 +289,7 @@ async function loginUser(req, res) {
         const { password_hash, ...safeUserData } = user;
         return res.status(200).json({
             message: "Logged in Successfully",
+            token,
             data: safeUserData,
             profile,
         });
@@ -300,7 +303,8 @@ async function logoutUser(req, res) {
     res.clearCookie("token", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        path: "/",
     });
 
     return res.status(200).json({
@@ -511,6 +515,7 @@ async function googleAuth(req, res) {
 
         return res.status(200).json({
             message: "Google authentication successful",
+            token,
             isNewUser,
             hasProfile: Boolean(profile),
             data: user,

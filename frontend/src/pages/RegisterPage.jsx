@@ -1,0 +1,364 @@
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Eye, EyeOff, Flame, ChevronRight, ChevronLeft } from 'lucide-react'
+import api from '../lib/api'
+import { useAuthStore } from '../store/authStore'
+import GoogleAuthButton from '../components/auth/GoogleAuthButton'
+import ThemeToggle from '../components/ui/ThemeToggle'
+
+const FITNESS_GOALS = [
+  { value: 'hypertrophy', label: 'Hypertrophy – Build muscle size' },
+  { value: 'strength', label: 'Strength – Get stronger' },
+  { value: 'endurance', label: 'Endurance – Improve stamina' },
+  { value: 'weight_loss', label: 'Weight Loss – Burn fat' },
+  { value: 'general_fitness', label: 'General Fitness – Stay healthy' },
+]
+
+const EXPERIENCE_LEVELS = [
+  { value: 'beginner', label: 'Beginner', desc: '< 1 year of training' },
+  { value: 'intermediate', label: 'Intermediate', desc: '1–3 years of training' },
+  { value: 'advanced', label: 'Advanced', desc: '3+ years of training' },
+]
+
+const INITIAL = {
+  // step 1
+  name: '',
+  username: '',
+  email: '',
+  password: '',
+  // step 2
+  height_cm: '',
+  weight_kg: '',
+  fitness_goal: 'hypertrophy',
+  experience_level: 'intermediate',
+  bio: '',
+}
+
+export default function RegisterPage() {
+  const navigate = useNavigate()
+  const { setAuth } = useAuthStore()
+
+  const [step, setStep] = useState(1)
+  const [form, setForm] = useState(INITIAL)
+  const [showPassword, setShowPassword] = useState(false)
+  const [errors, setErrors] = useState({})
+  const [serverError, setServerError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setForm((p) => ({ ...p, [name]: value }))
+    setErrors((p) => ({ ...p, [name]: '' }))
+    setServerError('')
+  }
+
+  const validateStep1 = () => {
+    const e = {}
+    if (!form.username.trim()) e.username = 'Username is required'
+    else if (!/^[a-z0-9_]{3,30}$/.test(form.username.toLowerCase()))
+      e.username = '3–30 chars: lowercase letters, numbers, underscore'
+    if (!form.email.trim()) e.email = 'Email is required'
+    else if (!/\S+@\S+\.\S+/.test(form.email)) e.email = 'Enter a valid email'
+    if (!form.password) e.password = 'Password is required'
+    else if (form.password.length < 8) e.password = 'At least 8 characters'
+    return e
+  }
+
+  const validateStep2 = () => {
+    const e = {}
+    if (!form.height_cm || isNaN(form.height_cm) || form.height_cm <= 0)
+      e.height_cm = 'Enter a valid height (cm)'
+    if (!form.weight_kg || isNaN(form.weight_kg) || form.weight_kg <= 0)
+      e.weight_kg = 'Enter a valid weight (kg)'
+    if (!form.fitness_goal) e.fitness_goal = 'Choose a fitness goal'
+    if (!form.experience_level) e.experience_level = 'Choose your experience level'
+    return e
+  }
+
+  const handleNext = () => {
+    const v = validateStep1()
+    if (Object.keys(v).length) {
+      setErrors(v)
+      return
+    }
+    setStep(2)
+  }
+
+  const handleBack = () => setStep(1)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const v = validateStep2()
+    if (Object.keys(v).length) {
+      setErrors(v)
+      return
+    }
+
+    setLoading(true)
+    try {
+      const payload = {
+        name: form.name.trim() || undefined,
+        username: form.username.trim().toLowerCase(),
+        email: form.email.trim().toLowerCase(),
+        password: form.password,
+        profile: {
+          height_cm: parseFloat(form.height_cm),
+          weight_kg: parseFloat(form.weight_kg),
+          fitness_goal: form.fitness_goal,
+          experience_level: form.experience_level,
+          bio: form.bio.trim() || undefined,
+        },
+      }
+      const { data } = await api.post('/auth/register', payload)
+      const user = data.data || data.user
+      setAuth(user, data.profile ?? null)
+      navigate('/')
+    } catch (err) {
+      console.error('Registration error:', err)
+      setServerError(
+        err.response?.data?.message || 'Registration failed. Please check your details.'
+      )
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center px-4 py-8 relative transition-colors">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
+
+      <div className="w-full max-w-md space-y-6">
+        {/* Brand */}
+        <div className="flex flex-col items-center">
+          <div className="w-12 h-12 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-500 mb-3 shadow-md shadow-orange-500/10">
+            <Flame className="w-7 h-7 text-orange-500 fill-orange-500" />
+          </div>
+          <h1 className="text-2xl font-black text-zinc-900 dark:text-white tracking-tight">
+            Join Wannabe<span className="text-orange-500">Lyfta</span>
+          </h1>
+          <p className="text-zinc-500 dark:text-zinc-400 text-xs mt-1 font-semibold uppercase tracking-wider">
+            Step {step} of 2 • {step === 1 ? 'Account Setup' : 'Fitness Goals'}
+          </p>
+        </div>
+
+        {/* Card */}
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-7 shadow-xl space-y-5 transition-colors">
+          {step === 1 && (
+            <>
+              <GoogleAuthButton label="Sign up with Google" />
+
+              <div className="flex items-center gap-3">
+                <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
+                <span className="text-[11px] text-zinc-400 font-bold uppercase tracking-wider">or email</span>
+                <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
+              </div>
+
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300">
+                    Full Name (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Alex Hunter"
+                    className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 outline-none focus:border-orange-500 transition-colors"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300">
+                    Username *
+                  </label>
+                  <input
+                    type="text"
+                    name="username"
+                    value={form.username}
+                    onChange={handleChange}
+                    placeholder="iron_warrior"
+                    className={`w-full bg-zinc-50 dark:bg-zinc-800 border rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 outline-none focus:border-orange-500 transition-colors ${
+                      errors.username ? 'border-red-500' : 'border-zinc-200 dark:border-zinc-700'
+                    }`}
+                  />
+                  {errors.username && (
+                    <p className="mt-1 text-xs text-red-500 font-semibold">{errors.username}</p>
+                  )}
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="alex@example.com"
+                    className={`w-full bg-zinc-50 dark:bg-zinc-800 border rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 outline-none focus:border-orange-500 transition-colors ${
+                      errors.email ? 'border-red-500' : 'border-zinc-200 dark:border-zinc-700'
+                    }`}
+                  />
+                  {errors.email && (
+                    <p className="mt-1 text-xs text-red-500 font-semibold">{errors.email}</p>
+                  )}
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300">
+                    Password *
+                  </label>
+                  <div className="relative">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      name="password"
+                      value={form.password}
+                      onChange={handleChange}
+                      placeholder="At least 8 characters"
+                      className={`w-full bg-zinc-50 dark:bg-zinc-800 border rounded-xl px-3.5 py-2.5 pr-10 text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 outline-none focus:border-orange-500 transition-colors ${
+                        errors.password ? 'border-red-500' : 'border-zinc-200 dark:border-zinc-700'
+                      }`}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword((v) => !v)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
+                      tabIndex={-1}
+                    >
+                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  </div>
+                  {errors.password && (
+                    <p className="mt-1 text-xs text-red-500 font-semibold">{errors.password}</p>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl text-sm transition-all shadow-md shadow-orange-500/20 flex items-center justify-center gap-1.5 mt-2"
+                >
+                  <span>Continue to Fitness Profile</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </>
+          )}
+
+          {step === 2 && (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300">
+                    Height (cm) *
+                  </label>
+                  <input
+                    type="number"
+                    name="height_cm"
+                    value={form.height_cm}
+                    onChange={handleChange}
+                    placeholder="178"
+                    className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 dark:text-white outline-none focus:border-orange-500"
+                  />
+                  {errors.height_cm && (
+                    <p className="text-[11px] text-red-500 font-semibold">{errors.height_cm}</p>
+                  )}
+                </div>
+
+                <div className="space-y-1">
+                  <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300">
+                    Weight (kg) *
+                  </label>
+                  <input
+                    type="number"
+                    step="0.5"
+                    name="weight_kg"
+                    value={form.weight_kg}
+                    onChange={handleChange}
+                    placeholder="75"
+                    className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 dark:text-white outline-none focus:border-orange-500"
+                  />
+                  {errors.weight_kg && (
+                    <p className="text-[11px] text-red-500 font-semibold">{errors.weight_kg}</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300">
+                  Fitness Goal *
+                </label>
+                <select
+                  name="fitness_goal"
+                  value={form.fitness_goal}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 dark:text-white outline-none focus:border-orange-500 cursor-pointer font-medium"
+                >
+                  {FITNESS_GOALS.map((g) => (
+                    <option key={g.value} value={g.value}>
+                      {g.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="block text-xs font-bold text-zinc-600 dark:text-zinc-300">
+                  Experience Level *
+                </label>
+                <select
+                  name="experience_level"
+                  value={form.experience_level}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-3.5 py-2.5 text-sm text-zinc-900 dark:text-white outline-none focus:border-orange-500 cursor-pointer font-medium"
+                >
+                  {EXPERIENCE_LEVELS.map((exp) => (
+                    <option key={exp.value} value={exp.value}>
+                      {exp.label} – {exp.desc}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {serverError && (
+                <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-xs text-red-500 font-semibold">
+                  {serverError}
+                </div>
+              )}
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={handleBack}
+                  className="flex-1 py-3 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 font-bold text-xs transition-colors flex items-center justify-center gap-1"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>Back</span>
+                </button>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="flex-2 py-3 rounded-xl bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-bold text-xs transition-all shadow-md shadow-orange-500/20"
+                >
+                  {loading ? 'Creating Account…' : 'Complete Registration'}
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+
+        <p className="text-center text-xs font-semibold text-zinc-500">
+          Already have an account?{' '}
+          <Link to="/login" className="text-orange-500 hover:underline">
+            Sign in
+          </Link>
+        </p>
+      </div>
+    </div>
+  )
+}
