@@ -1,0 +1,39 @@
+=== W17 run 1 ===
+Delete on exercises  (cost=0.27..8.29 rows=1 width=6) (actual time=0.109..0.110 rows=1.00 loops=1)
+   Buffers: shared hit=12
+   ->  Index Scan using exercises_pkey on exercises  (cost=0.27..8.29 rows=1 width=6) (actual time=0.015..0.016 rows=1.00 loops=1)
+         Index Cond: (id = 'exercise-to-delete'::text)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=139
+ Planning Time: 0.501 ms
+ Trigger for constraint program_day_exercises_exercise_id_fkey: time=0.373 calls=1
+ Trigger for constraint workout_sets_exercise_id_fkey: time=0.272 calls=1
+ Execution Time: 0.858 ms
+=== W17 run 2 ===
+Delete on exercises  (cost=0.27..8.29 rows=1 width=6) (actual time=0.073..0.074 rows=1.00 loops=1)
+   Buffers: shared hit=11
+   ->  Index Scan using exercises_pkey on exercises  (cost=0.27..8.29 rows=1 width=6) (actual time=0.022..0.022 rows=1.00 loops=1)
+         Index Cond: (id = 'exercise-to-delete'::text)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=139
+ Planning Time: 0.513 ms
+ Trigger for constraint program_day_exercises_exercise_id_fkey: time=0.441 calls=1
+ Trigger for constraint workout_sets_exercise_id_fkey: time=0.307 calls=1
+ Execution Time: 0.923 ms
+=== W17 run 3 ===
+Delete on exercises  (cost=0.27..8.29 rows=1 width=6) (actual time=0.069..0.070 rows=1.00 loops=1)
+   Buffers: shared hit=11
+   ->  Index Scan using exercises_pkey on exercises  (cost=0.27..8.29 rows=1 width=6) (actual time=0.020..0.020 rows=1.00 loops=1)
+         Index Cond: (id = 'exercise-to-delete'::text)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=139
+ Planning Time: 0.515 ms
+ Trigger for constraint program_day_exercises_exercise_id_fkey: time=0.368 calls=1
+ Trigger for constraint workout_sets_exercise_id_fkey: time=0.263 calls=1
+ Execution Time: 0.795 ms

@@ -1,0 +1,45 @@
+=== W10 run 1 ===
+Delete on workout_programs  (cost=0.00..5.50 rows=0 width=0) (actual time=0.066..0.067 rows=0.00 loops=1)
+   Buffers: shared hit=10
+   ->  Seq Scan on workout_programs  (cost=0.00..5.50 rows=1 width=6) (actual time=0.005..0.022 rows=1.00 loops=1)
+         Filter: (id = '22222222-2222-2222-2222-222222222222'::uuid)
+         Rows Removed by Filter: 199
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=94
+ Planning Time: 0.381 ms
+ Trigger for constraint program_days_program_id_fkey on workout_programs: time=0.383 calls=1
+ Trigger for constraint user_active_programs_program_id_fkey on workout_programs: time=0.458 calls=1
+ Trigger for constraint program_day_exercises_program_day_id_fkey on program_days: time=0.438 calls=4
+ Trigger for constraint workout_logs_program_day_id_fkey on program_days: time=0.878 calls=4
+ Execution Time: 2.310 ms
+=== W10 run 2 ===
+Delete on workout_programs  (cost=0.00..5.50 rows=0 width=0) (actual time=0.072..0.072 rows=0.00 loops=1)
+   Buffers: shared hit=10
+   ->  Seq Scan on workout_programs  (cost=0.00..5.50 rows=1 width=6) (actual time=0.011..0.023 rows=1.00 loops=1)
+         Filter: (id = '22222222-2222-2222-2222-222222222222'::uuid)
+         Rows Removed by Filter: 199
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=94
+ Planning Time: 0.386 ms
+ Trigger for constraint program_days_program_id_fkey on workout_programs: time=0.371 calls=1
+ Trigger for constraint user_active_programs_program_id_fkey on workout_programs: time=0.423 calls=1
+ Trigger for constraint program_day_exercises_program_day_id_fkey on program_days: time=0.488 calls=4
+ Trigger for constraint workout_logs_program_day_id_fkey on program_days: time=1.440 calls=4
+ Execution Time: 2.887 ms
+=== W10 run 3 ===
+Delete on workout_programs  (cost=0.00..5.50 rows=0 width=0) (actual time=0.083..0.083 rows=0.00 loops=1)
+   Buffers: shared hit=10
+   ->  Seq Scan on workout_programs  (cost=0.00..5.50 rows=1 width=6) (actual time=0.021..0.033 rows=1.00 loops=1)
+         Filter: (id = '22222222-2222-2222-2222-222222222222'::uuid)
+         Rows Removed by Filter: 199
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=94
+ Planning Time: 0.360 ms
+ Trigger for constraint program_days_program_id_fkey on workout_programs: time=0.409 calls=1
+ Trigger for constraint user_active_programs_program_id_fkey on workout_programs: time=0.455 calls=1
+ Trigger for constraint program_day_exercises_program_day_id_fkey on program_days: time=0.467 calls=4
+ Trigger for constraint workout_logs_program_day_id_fkey on program_days: time=0.932 calls=4
+ Execution Time: 2.438 ms

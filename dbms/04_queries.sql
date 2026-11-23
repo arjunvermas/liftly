@@ -189,23 +189,23 @@ WHERE name ILIKE '%press%'
 -- Used by: auth.controller.js registerUser
 -- WRITE
 INSERT INTO users (username, email, name, password_hash)
-VALUES ('asha_fit', 'asha@example.com', 'Asha', '$2b$10$sampleHashSampleHashSampleHashSampleHashSampleHash')
+VALUES ('alex_fit', 'alex.mercer@example.com', 'Alex Mercer', '$2b$10$sampleHashSampleHashSampleHashSampleHashSampleHash')
 RETURNING *;
 
 -- W2: Google sign-in: create the user on first login
 -- Used by: auth.controller.js googleAuth
 -- WRITE
 INSERT INTO users (username, email, name, password_hash)
-VALUES ('asha_1a2b3c4d', 'asha@example.com', 'Asha', '$2b$10$sampleHashSampleHashSampleHashSampleHashSampleHash')
+VALUES ('alex_oauth', 'alex.oauth@example.com', 'Alex Mercer', '$2b$10$sampleHashSampleHashSampleHashSampleHashSampleHash')
 RETURNING id, username, email, name;
 
 -- W3: Register: create the fitness profile for the new user
 -- Used by: auth.controller.js registerUser
 -- WRITE
 INSERT INTO profiles (user_id, avatar_url, bio, height_cm, weight_kg, fitness_goal, experience_level)
-VALUES ('11111111-1111-1111-1111-111111111111',
-        'https://api.dicebear.com/7.x/initials/svg?seed=asha_fit',
-        '', 165, 60, 'general_fitness', 'beginner')
+VALUES ('55555555-5555-5555-5555-555555555555',
+        'https://api.dicebear.com/7.x/initials/svg?seed=alex_fit',
+        'Consistent lifter focused on progressive overload.', 182.5, 78.4, 'hypertrophy', 'intermediate')
 RETURNING avatar_url, bio, height_cm, weight_kg, fitness_goal, experience_level;
 
 -- W4: Register: undo the user if creating the profile failed
@@ -242,8 +242,8 @@ RETURNING id, title, description, days_per_week, is_default, user_id, created_at
 -- Used by: program.controller.js createProgram
 -- WRITE
 INSERT INTO program_days (program_id, day_number, day_name, focus)
-VALUES ('22222222-2222-2222-2222-222222222222', 1, 'Push Day', 'Chest'),
-       ('22222222-2222-2222-2222-222222222222', 2, 'Pull Day', 'Back')
+VALUES ('66666666-6666-6666-6666-666666666666', 1, 'Push Day', 'Chest'),
+       ('66666666-6666-6666-6666-666666666666', 2, 'Pull Day', 'Back')
 RETURNING id, day_number;
 
 -- W9: Add exercises to the days of the new program
@@ -251,8 +251,8 @@ RETURNING id, day_number;
 -- WRITE
 INSERT INTO program_day_exercises
     (program_day_id, exercise_id, order_index, target_sets, target_reps, rest_seconds, notes)
-VALUES ('33333333-3333-3333-3333-333333333333', 'exercise-id-1', 1, 4, '8-10', 90, NULL),
-       ('33333333-3333-3333-3333-333333333333', 'exercise-id-2', 2, 3, '10-12', 60, 'Slow tempo');
+VALUES ('77777777-7777-7777-7777-777777777777', 'exercise-id-1', 1, 4, '8-10', 90, NULL),
+       ('77777777-7777-7777-7777-777777777777', 'exercise-id-2', 2, 3, '10-12', 60, 'Slow tempo');
 
 -- W10: Create program: undo the program if a later insert failed (days and exercises cascade)
 -- Used by: program.controller.js createProgram (error path)
@@ -319,5 +319,5 @@ RETURNING *;
 -- Used by: workout.controller.js deleteExerciseController
 -- WRITE
 DELETE FROM exercises
-WHERE id = 'exercise-id-1'
+WHERE id = 'exercise-to-delete'
 RETURNING *;

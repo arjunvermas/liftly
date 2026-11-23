@@ -1,0 +1,30 @@
+=== W12 run 1 ===
+Insert on workout_logs  (cost=0.00..0.01 rows=1 width=124) (actual time=0.223..0.223 rows=1.00 loops=1)
+   Buffers: shared hit=74
+   ->  Result  (cost=0.00..0.01 rows=1 width=124) (actual time=0.015..0.016 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=13
+ Planning Time: 0.075 ms
+ Trigger for constraint workout_logs_user_id_fkey: time=0.512 calls=1
+ Trigger for constraint workout_logs_program_day_id_fkey: time=0.318 calls=1
+ Execution Time: 1.090 ms
+=== W12 run 2 ===
+Insert on workout_logs  (cost=0.00..0.01 rows=1 width=124) (actual time=0.261..0.262 rows=1.00 loops=1)
+   Buffers: shared hit=74
+   ->  Result  (cost=0.00..0.01 rows=1 width=124) (actual time=0.018..0.018 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=13
+ Planning Time: 0.075 ms
+ Trigger for constraint workout_logs_user_id_fkey: time=0.517 calls=1
+ Trigger for constraint workout_logs_program_day_id_fkey: time=0.289 calls=1
+ Execution Time: 1.107 ms
+=== W12 run 3 ===
+Insert on workout_logs  (cost=0.00..0.01 rows=1 width=124) (actual time=0.253..0.253 rows=1.00 loops=1)
+   Buffers: shared hit=74
+   ->  Result  (cost=0.00..0.01 rows=1 width=124) (actual time=0.017..0.017 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=13
+ Planning Time: 0.074 ms
+ Trigger for constraint workout_logs_user_id_fkey: time=0.512 calls=1
+ Trigger for constraint workout_logs_program_day_id_fkey: time=0.280 calls=1
+ Execution Time: 1.083 ms

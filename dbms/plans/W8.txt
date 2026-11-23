@@ -1,0 +1,27 @@
+=== W8 run 1 ===
+Insert on program_days  (cost=0.00..0.04 rows=2 width=108) (actual time=0.374..0.386 rows=2.00 loops=1)
+   Buffers: shared hit=84
+   ->  Values Scan on "*VALUES*"  (cost=0.00..0.04 rows=2 width=108) (actual time=0.018..0.024 rows=2.00 loops=1)
+ Planning:
+   Buffers: shared hit=13
+ Planning Time: 0.115 ms
+ Trigger for constraint program_days_program_id_fkey: time=0.581 calls=2
+ Execution Time: 1.025 ms
+=== W8 run 2 ===
+Insert on program_days  (cost=0.00..0.04 rows=2 width=108) (actual time=0.244..0.254 rows=2.00 loops=1)
+   Buffers: shared hit=86
+   ->  Values Scan on "*VALUES*"  (cost=0.00..0.04 rows=2 width=108) (actual time=0.015..0.018 rows=2.00 loops=1)
+ Planning:
+   Buffers: shared hit=13
+ Planning Time: 0.081 ms
+ Trigger for constraint program_days_program_id_fkey: time=0.547 calls=2
+ Execution Time: 0.840 ms
+=== W8 run 3 ===
+Insert on program_days  (cost=0.00..0.04 rows=2 width=108) (actual time=0.235..0.244 rows=2.00 loops=1)
+   Buffers: shared hit=86
+   ->  Values Scan on "*VALUES*"  (cost=0.00..0.04 rows=2 width=108) (actual time=0.015..0.018 rows=2.00 loops=1)
+ Planning:
+   Buffers: shared hit=13
+ Planning Time: 0.076 ms
+ Trigger for constraint program_days_program_id_fkey: time=0.462 calls=2
+ Execution Time: 0.743 ms

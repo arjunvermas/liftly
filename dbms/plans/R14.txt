@@ -1,0 +1,96 @@
+=== R14 run 1 ===
+Sort  (cost=44.25..44.26 rows=5 width=299) (actual time=0.190..0.192 rows=5.00 loops=1)
+   Sort Key: ws.set_number
+   Sort Method: quicksort  Memory: 26kB
+   Buffers: shared hit=18
+   ->  Nested Loop Left Join  (cost=21.39..44.19 rows=5 width=299) (actual time=0.069..0.171 rows=5.00 loops=1)
+         Buffers: shared hit=15
+         ->  Index Scan using workout_logs_pkey on workout_logs wl  (cost=0.28..8.30 rows=1 width=64) (actual time=0.017..0.018 rows=1.00 loops=1)
+               Index Cond: (id = '44444444-4444-4444-4444-444444444444'::uuid)
+               Filter: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=3
+         ->  Hash Right Join  (cost=21.11..35.84 rows=5 width=251) (actual time=0.050..0.150 rows=5.00 loops=1)
+               Hash Cond: (e.id = ws.exercise_id)
+               Buffers: shared hit=12
+               ->  Seq Scan on exercises e  (cost=0.00..12.03 rows=303 width=201) (actual time=0.010..0.031 rows=303.00 loops=1)
+                     Buffers: shared hit=9
+               ->  Hash  (cost=21.05..21.05 rows=5 width=64) (actual time=0.031..0.031 rows=5.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                     Buffers: shared hit=3
+                     ->  Bitmap Heap Scan on workout_sets ws  (cost=4.32..21.05 rows=5 width=64) (actual time=0.022..0.023 rows=5.00 loops=1)
+                           Recheck Cond: (workout_log_id = '44444444-4444-4444-4444-444444444444'::uuid)
+                           Heap Blocks: exact=1
+                           Buffers: shared hit=3
+                           ->  Bitmap Index Scan on idx_workout_sets_log_id  (cost=0.00..4.32 rows=5 width=0) (actual time=0.011..0.011 rows=5.00 loops=1)
+                                 Index Cond: (workout_log_id = '44444444-4444-4444-4444-444444444444'::uuid)
+                                 Index Searches: 1
+                                 Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=519
+ Planning Time: 1.448 ms
+ Execution Time: 0.274 ms
+=== R14 run 2 ===
+Sort  (cost=44.25..44.26 rows=5 width=299) (actual time=0.211..0.213 rows=5.00 loops=1)
+   Sort Key: ws.set_number
+   Sort Method: quicksort  Memory: 26kB
+   Buffers: shared hit=18
+   ->  Nested Loop Left Join  (cost=21.39..44.19 rows=5 width=299) (actual time=0.056..0.172 rows=5.00 loops=1)
+         Buffers: shared hit=15
+         ->  Index Scan using workout_logs_pkey on workout_logs wl  (cost=0.28..8.30 rows=1 width=64) (actual time=0.015..0.015 rows=1.00 loops=1)
+               Index Cond: (id = '44444444-4444-4444-4444-444444444444'::uuid)
+               Filter: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=3
+         ->  Hash Right Join  (cost=21.11..35.84 rows=5 width=251) (actual time=0.039..0.154 rows=5.00 loops=1)
+               Hash Cond: (e.id = ws.exercise_id)
+               Buffers: shared hit=12
+               ->  Seq Scan on exercises e  (cost=0.00..12.03 rows=303 width=201) (actual time=0.006..0.029 rows=303.00 loops=1)
+                     Buffers: shared hit=9
+               ->  Hash  (cost=21.05..21.05 rows=5 width=64) (actual time=0.025..0.025 rows=5.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                     Buffers: shared hit=3
+                     ->  Bitmap Heap Scan on workout_sets ws  (cost=4.32..21.05 rows=5 width=64) (actual time=0.018..0.019 rows=5.00 loops=1)
+                           Recheck Cond: (workout_log_id = '44444444-4444-4444-4444-444444444444'::uuid)
+                           Heap Blocks: exact=1
+                           Buffers: shared hit=3
+                           ->  Bitmap Index Scan on idx_workout_sets_log_id  (cost=0.00..4.32 rows=5 width=0) (actual time=0.008..0.008 rows=5.00 loops=1)
+                                 Index Cond: (workout_log_id = '44444444-4444-4444-4444-444444444444'::uuid)
+                                 Index Searches: 1
+                                 Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=519
+ Planning Time: 1.405 ms
+ Execution Time: 0.291 ms
+=== R14 run 3 ===
+Sort  (cost=44.25..44.26 rows=5 width=299) (actual time=0.141..0.142 rows=5.00 loops=1)
+   Sort Key: ws.set_number
+   Sort Method: quicksort  Memory: 26kB
+   Buffers: shared hit=18
+   ->  Nested Loop Left Join  (cost=21.39..44.19 rows=5 width=299) (actual time=0.043..0.125 rows=5.00 loops=1)
+         Buffers: shared hit=15
+         ->  Index Scan using workout_logs_pkey on workout_logs wl  (cost=0.28..8.30 rows=1 width=64) (actual time=0.011..0.011 rows=1.00 loops=1)
+               Index Cond: (id = '44444444-4444-4444-4444-444444444444'::uuid)
+               Filter: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+               Index Searches: 1
+               Buffers: shared hit=3
+         ->  Hash Right Join  (cost=21.11..35.84 rows=5 width=251) (actual time=0.030..0.111 rows=5.00 loops=1)
+               Hash Cond: (e.id = ws.exercise_id)
+               Buffers: shared hit=12
+               ->  Seq Scan on exercises e  (cost=0.00..12.03 rows=303 width=201) (actual time=0.006..0.025 rows=303.00 loops=1)
+                     Buffers: shared hit=9
+               ->  Hash  (cost=21.05..21.05 rows=5 width=64) (actual time=0.019..0.019 rows=5.00 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                     Buffers: shared hit=3
+                     ->  Bitmap Heap Scan on workout_sets ws  (cost=4.32..21.05 rows=5 width=64) (actual time=0.013..0.014 rows=5.00 loops=1)
+                           Recheck Cond: (workout_log_id = '44444444-4444-4444-4444-444444444444'::uuid)
+                           Heap Blocks: exact=1
+                           Buffers: shared hit=3
+                           ->  Bitmap Index Scan on idx_workout_sets_log_id  (cost=0.00..4.32 rows=5 width=0) (actual time=0.007..0.007 rows=5.00 loops=1)
+                                 Index Cond: (workout_log_id = '44444444-4444-4444-4444-444444444444'::uuid)
+                                 Index Searches: 1
+                                 Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=519
+ Planning Time: 1.317 ms
+ Execution Time: 0.205 ms

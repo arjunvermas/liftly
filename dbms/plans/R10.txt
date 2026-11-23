@@ -1,0 +1,138 @@
+=== R10 run 1 ===
+Sort  (cost=12.98..12.99 rows=3 width=366) (actual time=0.102..0.103 rows=9.00 loops=1)
+   Sort Key: pd.day_number, pde.order_index
+   Sort Method: quicksort  Memory: 28kB
+   Buffers: shared hit=34
+   ->  Nested Loop Left Join  (cost=11.60..12.96 rows=3 width=366) (actual time=0.072..0.086 rows=9.00 loops=1)
+         Buffers: shared hit=31
+         ->  Nested Loop Left Join  (cost=11.32..11.91 rows=3 width=179) (actual time=0.050..0.058 rows=9.00 loops=1)
+               Buffers: shared hit=25
+               ->  Nested Loop Left Join  (cost=11.17..11.47 rows=1 width=112) (actual time=0.043..0.046 rows=4.00 loops=1)
+                     Buffers: shared hit=18
+                     ->  Merge Join  (cost=11.02..11.16 rows=1 width=78) (actual time=0.035..0.036 rows=1.00 loops=1)
+                           Merge Cond: (wp.id = uap.program_id)
+                           Buffers: shared hit=16
+                           ->  Index Scan using workout_programs_pkey on workout_programs wp  (cost=0.14..23.09 rows=200 width=54) (actual time=0.005..0.013 rows=24.00 loops=1)
+                                 Index Searches: 1
+                                 Buffers: shared hit=13
+                           ->  Sort  (cost=8.30..8.31 rows=1 width=40) (actual time=0.017..0.017 rows=1.00 loops=1)
+                                 Sort Key: uap.program_id
+                                 Sort Method: quicksort  Memory: 25kB
+                                 Buffers: shared hit=3
+                                 ->  Index Scan using user_active_programs_user_id_key on user_active_programs uap  (cost=0.27..8.29 rows=1 width=40) (actual time=0.010..0.010 rows=1.00 loops=1)
+                                       Index Cond: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+                                       Index Searches: 1
+                                       Buffers: shared hit=3
+                     ->  Index Scan using idx_program_days_program_id on program_days pd  (cost=0.14..0.28 rows=3 width=50) (actual time=0.007..0.007 rows=4.00 loops=1)
+                           Index Cond: (program_id = wp.id)
+                           Index Searches: 1
+                           Buffers: shared hit=2
+               ->  Index Scan using idx_program_day_exercises_day_id on program_day_exercises pde  (cost=0.15..0.42 rows=3 width=83) (actual time=0.002..0.002 rows=2.00 loops=4)
+                     Index Cond: (program_day_id = pd.id)
+                     Index Searches: 4
+                     Buffers: shared hit=7
+         ->  Memoize  (cost=0.28..0.43 rows=1 width=201) (actual time=0.003..0.003 rows=0.89 loops=9)
+               Cache Key: pde.exercise_id
+               Cache Mode: logical
+               Hits: 6  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+               Buffers: shared hit=6
+               ->  Index Scan using exercises_pkey on exercises e  (cost=0.27..0.42 rows=1 width=201) (actual time=0.006..0.006 rows=0.67 loops=3)
+                     Index Cond: (id = pde.exercise_id)
+                     Index Searches: 2
+                     Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=674
+ Planning Time: 2.013 ms
+ Execution Time: 0.186 ms
+=== R10 run 2 ===
+Sort  (cost=12.98..12.99 rows=3 width=366) (actual time=0.111..0.112 rows=9.00 loops=1)
+   Sort Key: pd.day_number, pde.order_index
+   Sort Method: quicksort  Memory: 28kB
+   Buffers: shared hit=34
+   ->  Nested Loop Left Join  (cost=11.60..12.96 rows=3 width=366) (actual time=0.081..0.095 rows=9.00 loops=1)
+         Buffers: shared hit=31
+         ->  Nested Loop Left Join  (cost=11.32..11.91 rows=3 width=179) (actual time=0.055..0.063 rows=9.00 loops=1)
+               Buffers: shared hit=25
+               ->  Nested Loop Left Join  (cost=11.17..11.47 rows=1 width=112) (actual time=0.048..0.051 rows=4.00 loops=1)
+                     Buffers: shared hit=18
+                     ->  Merge Join  (cost=11.02..11.16 rows=1 width=78) (actual time=0.039..0.040 rows=1.00 loops=1)
+                           Merge Cond: (wp.id = uap.program_id)
+                           Buffers: shared hit=16
+                           ->  Index Scan using workout_programs_pkey on workout_programs wp  (cost=0.14..23.09 rows=200 width=54) (actual time=0.006..0.014 rows=24.00 loops=1)
+                                 Index Searches: 1
+                                 Buffers: shared hit=13
+                           ->  Sort  (cost=8.30..8.31 rows=1 width=40) (actual time=0.019..0.019 rows=1.00 loops=1)
+                                 Sort Key: uap.program_id
+                                 Sort Method: quicksort  Memory: 25kB
+                                 Buffers: shared hit=3
+                                 ->  Index Scan using user_active_programs_user_id_key on user_active_programs uap  (cost=0.27..8.29 rows=1 width=40) (actual time=0.011..0.011 rows=1.00 loops=1)
+                                       Index Cond: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+                                       Index Searches: 1
+                                       Buffers: shared hit=3
+                     ->  Index Scan using idx_program_days_program_id on program_days pd  (cost=0.14..0.28 rows=3 width=50) (actual time=0.007..0.008 rows=4.00 loops=1)
+                           Index Cond: (program_id = wp.id)
+                           Index Searches: 1
+                           Buffers: shared hit=2
+               ->  Index Scan using idx_program_day_exercises_day_id on program_day_exercises pde  (cost=0.15..0.42 rows=3 width=83) (actual time=0.002..0.002 rows=2.00 loops=4)
+                     Index Cond: (program_day_id = pd.id)
+                     Index Searches: 4
+                     Buffers: shared hit=7
+         ->  Memoize  (cost=0.28..0.43 rows=1 width=201) (actual time=0.003..0.003 rows=0.89 loops=9)
+               Cache Key: pde.exercise_id
+               Cache Mode: logical
+               Hits: 6  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+               Buffers: shared hit=6
+               ->  Index Scan using exercises_pkey on exercises e  (cost=0.27..0.42 rows=1 width=201) (actual time=0.007..0.007 rows=0.67 loops=3)
+                     Index Cond: (id = pde.exercise_id)
+                     Index Searches: 2
+                     Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=674
+ Planning Time: 1.964 ms
+ Execution Time: 0.205 ms
+=== R10 run 3 ===
+Sort  (cost=12.98..12.99 rows=3 width=366) (actual time=0.157..0.159 rows=9.00 loops=1)
+   Sort Key: pd.day_number, pde.order_index
+   Sort Method: quicksort  Memory: 28kB
+   Buffers: shared hit=34
+   ->  Nested Loop Left Join  (cost=11.60..12.96 rows=3 width=366) (actual time=0.125..0.140 rows=9.00 loops=1)
+         Buffers: shared hit=31
+         ->  Nested Loop Left Join  (cost=11.32..11.91 rows=3 width=179) (actual time=0.082..0.090 rows=9.00 loops=1)
+               Buffers: shared hit=25
+               ->  Nested Loop Left Join  (cost=11.17..11.47 rows=1 width=112) (actual time=0.073..0.076 rows=4.00 loops=1)
+                     Buffers: shared hit=18
+                     ->  Merge Join  (cost=11.02..11.16 rows=1 width=78) (actual time=0.050..0.052 rows=1.00 loops=1)
+                           Merge Cond: (wp.id = uap.program_id)
+                           Buffers: shared hit=16
+                           ->  Index Scan using workout_programs_pkey on workout_programs wp  (cost=0.14..23.09 rows=200 width=54) (actual time=0.007..0.019 rows=24.00 loops=1)
+                                 Index Searches: 1
+                                 Buffers: shared hit=13
+                           ->  Sort  (cost=8.30..8.31 rows=1 width=40) (actual time=0.024..0.024 rows=1.00 loops=1)
+                                 Sort Key: uap.program_id
+                                 Sort Method: quicksort  Memory: 25kB
+                                 Buffers: shared hit=3
+                                 ->  Index Scan using user_active_programs_user_id_key on user_active_programs uap  (cost=0.27..8.29 rows=1 width=40) (actual time=0.013..0.013 rows=1.00 loops=1)
+                                       Index Cond: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+                                       Index Searches: 1
+                                       Buffers: shared hit=3
+                     ->  Index Scan using idx_program_days_program_id on program_days pd  (cost=0.14..0.28 rows=3 width=50) (actual time=0.020..0.021 rows=4.00 loops=1)
+                           Index Cond: (program_id = wp.id)
+                           Index Searches: 1
+                           Buffers: shared hit=2
+               ->  Index Scan using idx_program_day_exercises_day_id on program_day_exercises pde  (cost=0.15..0.42 rows=3 width=83) (actual time=0.002..0.003 rows=2.00 loops=4)
+                     Index Cond: (program_day_id = pd.id)
+                     Index Searches: 4
+                     Buffers: shared hit=7
+         ->  Memoize  (cost=0.28..0.43 rows=1 width=201) (actual time=0.005..0.005 rows=0.89 loops=9)
+               Cache Key: pde.exercise_id
+               Cache Mode: logical
+               Hits: 6  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+               Buffers: shared hit=6
+               ->  Index Scan using exercises_pkey on exercises e  (cost=0.27..0.42 rows=1 width=201) (actual time=0.009..0.009 rows=0.67 loops=3)
+                     Index Cond: (id = pde.exercise_id)
+                     Index Searches: 2
+                     Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=674
+ Planning Time: 2.038 ms
+ Execution Time: 0.251 ms

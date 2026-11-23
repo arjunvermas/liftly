@@ -1,0 +1,30 @@
+=== W9 run 1 ===
+Insert on program_day_exercises  (cost=0.00..0.03 rows=0 width=0) (actual time=0.301..0.301 rows=0.00 loops=1)
+   Buffers: shared hit=107
+   ->  Values Scan on "*VALUES*"  (cost=0.00..0.03 rows=2 width=140) (actual time=0.015..0.020 rows=2.00 loops=1)
+ Planning:
+   Buffers: shared hit=7
+ Planning Time: 0.073 ms
+ Trigger for constraint program_day_exercises_program_day_id_fkey: time=0.505 calls=2
+ Trigger for constraint program_day_exercises_exercise_id_fkey: time=0.530 calls=2
+ Execution Time: 1.374 ms
+=== W9 run 2 ===
+Insert on program_day_exercises  (cost=0.00..0.03 rows=0 width=0) (actual time=0.382..0.383 rows=0.00 loops=1)
+   Buffers: shared hit=109
+   ->  Values Scan on "*VALUES*"  (cost=0.00..0.03 rows=2 width=140) (actual time=0.026..0.033 rows=2.00 loops=1)
+ Planning:
+   Buffers: shared hit=7
+ Planning Time: 0.122 ms
+ Trigger for constraint program_day_exercises_program_day_id_fkey: time=0.712 calls=2
+ Trigger for constraint program_day_exercises_exercise_id_fkey: time=0.566 calls=2
+ Execution Time: 1.705 ms
+=== W9 run 3 ===
+Insert on program_day_exercises  (cost=0.00..0.03 rows=0 width=0) (actual time=0.321..0.322 rows=0.00 loops=1)
+   Buffers: shared hit=109
+   ->  Values Scan on "*VALUES*"  (cost=0.00..0.03 rows=2 width=140) (actual time=0.018..0.023 rows=2.00 loops=1)
+ Planning:
+   Buffers: shared hit=7
+ Planning Time: 0.085 ms
+ Trigger for constraint program_day_exercises_program_day_id_fkey: time=0.514 calls=2
+ Trigger for constraint program_day_exercises_exercise_id_fkey: time=0.472 calls=2
+ Execution Time: 1.346 ms

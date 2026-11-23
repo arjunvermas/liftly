@@ -1,0 +1,27 @@
+=== R9 run 1 ===
+Seq Scan on workout_programs  (cost=0.00..5.50 rows=1 width=32) (actual time=0.007..0.018 rows=1.00 loops=1)
+   Filter: (id = '22222222-2222-2222-2222-222222222222'::uuid)
+   Rows Removed by Filter: 199
+   Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=94
+ Planning Time: 0.385 ms
+ Execution Time: 0.046 ms
+=== R9 run 2 ===
+Seq Scan on workout_programs  (cost=0.00..5.50 rows=1 width=32) (actual time=0.006..0.017 rows=1.00 loops=1)
+   Filter: (id = '22222222-2222-2222-2222-222222222222'::uuid)
+   Rows Removed by Filter: 199
+   Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=94
+ Planning Time: 0.389 ms
+ Execution Time: 0.045 ms
+=== R9 run 3 ===
+Seq Scan on workout_programs  (cost=0.00..5.50 rows=1 width=32) (actual time=0.007..0.019 rows=1.00 loops=1)
+   Filter: (id = '22222222-2222-2222-2222-222222222222'::uuid)
+   Rows Removed by Filter: 199
+   Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=94
+ Planning Time: 0.381 ms
+ Execution Time: 0.045 ms

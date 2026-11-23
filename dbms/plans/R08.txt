@@ -1,0 +1,114 @@
+=== R8 run 1 ===
+Sort  (cost=22.80..22.83 rows=12 width=210) (actual time=0.147..0.149 rows=9.00 loops=1)
+   Sort Key: pd.day_number, pde.order_index
+   Sort Method: quicksort  Memory: 26kB
+   Buffers: shared hit=20
+   ->  Nested Loop Left Join  (cost=4.18..22.59 rows=12 width=210) (actual time=0.057..0.131 rows=9.00 loops=1)
+         Buffers: shared hit=17
+         ->  Nested Loop Left Join  (cost=3.90..21.11 rows=12 width=155) (actual time=0.036..0.102 rows=9.00 loops=1)
+               Buffers: shared hit=11
+               ->  Seq Scan on workout_programs wp  (cost=0.00..5.50 rows=1 width=54) (actual time=0.005..0.015 rows=1.00 loops=1)
+                     Filter: (id = '22222222-2222-2222-2222-222222222222'::uuid)
+                     Rows Removed by Filter: 199
+                     Buffers: shared hit=3
+               ->  Hash Right Join  (cost=3.90..15.49 rows=12 width=117) (actual time=0.029..0.084 rows=9.00 loops=1)
+                     Hash Cond: (pde.program_day_id = pd.id)
+                     Buffers: shared hit=8
+                     ->  Seq Scan on program_day_exercises pde  (cost=0.00..10.40 rows=440 width=83) (actual time=0.004..0.029 rows=440.00 loops=1)
+                           Buffers: shared hit=6
+                     ->  Hash  (cost=3.85..3.85 rows=4 width=50) (actual time=0.017..0.017 rows=4.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           Buffers: shared hit=2
+                           ->  Seq Scan on program_days pd  (cost=0.00..3.85 rows=4 width=50) (actual time=0.004..0.013 rows=4.00 loops=1)
+                                 Filter: (program_id = '22222222-2222-2222-2222-222222222222'::uuid)
+                                 Rows Removed by Filter: 144
+                                 Buffers: shared hit=2
+         ->  Memoize  (cost=0.28..0.43 rows=1 width=69) (actual time=0.003..0.003 rows=0.89 loops=9)
+               Cache Key: pde.exercise_id
+               Cache Mode: logical
+               Hits: 6  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+               Buffers: shared hit=6
+               ->  Index Scan using exercises_pkey on exercises e  (cost=0.27..0.42 rows=1 width=69) (actual time=0.006..0.006 rows=0.67 loops=3)
+                     Index Cond: (id = pde.exercise_id)
+                     Index Searches: 2
+                     Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=600
+ Planning Time: 1.810 ms
+ Execution Time: 0.215 ms
+=== R8 run 2 ===
+Sort  (cost=22.80..22.83 rows=12 width=210) (actual time=0.152..0.154 rows=9.00 loops=1)
+   Sort Key: pd.day_number, pde.order_index
+   Sort Method: quicksort  Memory: 26kB
+   Buffers: shared hit=20
+   ->  Nested Loop Left Join  (cost=4.18..22.59 rows=12 width=210) (actual time=0.053..0.137 rows=9.00 loops=1)
+         Buffers: shared hit=17
+         ->  Nested Loop Left Join  (cost=3.90..21.11 rows=12 width=155) (actual time=0.033..0.110 rows=9.00 loops=1)
+               Buffers: shared hit=11
+               ->  Seq Scan on workout_programs wp  (cost=0.00..5.50 rows=1 width=54) (actual time=0.004..0.016 rows=1.00 loops=1)
+                     Filter: (id = '22222222-2222-2222-2222-222222222222'::uuid)
+                     Rows Removed by Filter: 199
+                     Buffers: shared hit=3
+               ->  Hash Right Join  (cost=3.90..15.49 rows=12 width=117) (actual time=0.027..0.091 rows=9.00 loops=1)
+                     Hash Cond: (pde.program_day_id = pd.id)
+                     Buffers: shared hit=8
+                     ->  Seq Scan on program_day_exercises pde  (cost=0.00..10.40 rows=440 width=83) (actual time=0.003..0.029 rows=440.00 loops=1)
+                           Buffers: shared hit=6
+                     ->  Hash  (cost=3.85..3.85 rows=4 width=50) (actual time=0.017..0.017 rows=4.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           Buffers: shared hit=2
+                           ->  Seq Scan on program_days pd  (cost=0.00..3.85 rows=4 width=50) (actual time=0.003..0.012 rows=4.00 loops=1)
+                                 Filter: (program_id = '22222222-2222-2222-2222-222222222222'::uuid)
+                                 Rows Removed by Filter: 144
+                                 Buffers: shared hit=2
+         ->  Memoize  (cost=0.28..0.43 rows=1 width=69) (actual time=0.003..0.003 rows=0.89 loops=9)
+               Cache Key: pde.exercise_id
+               Cache Mode: logical
+               Hits: 6  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+               Buffers: shared hit=6
+               ->  Index Scan using exercises_pkey on exercises e  (cost=0.27..0.42 rows=1 width=69) (actual time=0.005..0.005 rows=0.67 loops=3)
+                     Index Cond: (id = pde.exercise_id)
+                     Index Searches: 2
+                     Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=600
+ Planning Time: 1.559 ms
+ Execution Time: 0.218 ms
+=== R8 run 3 ===
+Sort  (cost=22.80..22.83 rows=12 width=210) (actual time=0.148..0.150 rows=9.00 loops=1)
+   Sort Key: pd.day_number, pde.order_index
+   Sort Method: quicksort  Memory: 26kB
+   Buffers: shared hit=20
+   ->  Nested Loop Left Join  (cost=4.18..22.59 rows=12 width=210) (actual time=0.055..0.132 rows=9.00 loops=1)
+         Buffers: shared hit=17
+         ->  Nested Loop Left Join  (cost=3.90..21.11 rows=12 width=155) (actual time=0.034..0.104 rows=9.00 loops=1)
+               Buffers: shared hit=11
+               ->  Seq Scan on workout_programs wp  (cost=0.00..5.50 rows=1 width=54) (actual time=0.004..0.014 rows=1.00 loops=1)
+                     Filter: (id = '22222222-2222-2222-2222-222222222222'::uuid)
+                     Rows Removed by Filter: 199
+                     Buffers: shared hit=3
+               ->  Hash Right Join  (cost=3.90..15.49 rows=12 width=117) (actual time=0.028..0.086 rows=9.00 loops=1)
+                     Hash Cond: (pde.program_day_id = pd.id)
+                     Buffers: shared hit=8
+                     ->  Seq Scan on program_day_exercises pde  (cost=0.00..10.40 rows=440 width=83) (actual time=0.004..0.031 rows=440.00 loops=1)
+                           Buffers: shared hit=6
+                     ->  Hash  (cost=3.85..3.85 rows=4 width=50) (actual time=0.016..0.016 rows=4.00 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           Buffers: shared hit=2
+                           ->  Seq Scan on program_days pd  (cost=0.00..3.85 rows=4 width=50) (actual time=0.003..0.012 rows=4.00 loops=1)
+                                 Filter: (program_id = '22222222-2222-2222-2222-222222222222'::uuid)
+                                 Rows Removed by Filter: 144
+                                 Buffers: shared hit=2
+         ->  Memoize  (cost=0.28..0.43 rows=1 width=69) (actual time=0.003..0.003 rows=0.89 loops=9)
+               Cache Key: pde.exercise_id
+               Cache Mode: logical
+               Hits: 6  Misses: 3  Evictions: 0  Overflows: 0  Memory Usage: 1kB
+               Buffers: shared hit=6
+               ->  Index Scan using exercises_pkey on exercises e  (cost=0.27..0.42 rows=1 width=69) (actual time=0.006..0.006 rows=0.67 loops=3)
+                     Index Cond: (id = pde.exercise_id)
+                     Index Searches: 2
+                     Buffers: shared hit=6
+ Planning:
+   Buffers: shared hit=600
+ Planning Time: 1.636 ms
+ Execution Time: 0.216 ms

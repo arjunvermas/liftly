@@ -1,0 +1,33 @@
+=== R7 run 1 ===
+Sort  (cost=12.64..13.14 rows=200 width=63) (actual time=0.066..0.073 rows=200.00 loops=1)
+   Sort Key: created_at
+   Sort Method: quicksort  Memory: 42kB
+   Buffers: shared hit=6
+   ->  Seq Scan on workout_programs  (cost=0.00..5.00 rows=200 width=63) (actual time=0.005..0.029 rows=200.00 loops=1)
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=130
+ Planning Time: 0.449 ms
+ Execution Time: 0.113 ms
+=== R7 run 2 ===
+Sort  (cost=12.64..13.14 rows=200 width=63) (actual time=0.068..0.076 rows=200.00 loops=1)
+   Sort Key: created_at
+   Sort Method: quicksort  Memory: 42kB
+   Buffers: shared hit=6
+   ->  Seq Scan on workout_programs  (cost=0.00..5.00 rows=200 width=63) (actual time=0.006..0.030 rows=200.00 loops=1)
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=130
+ Planning Time: 0.410 ms
+ Execution Time: 0.116 ms
+=== R7 run 3 ===
+Sort  (cost=12.64..13.14 rows=200 width=63) (actual time=0.068..0.075 rows=200.00 loops=1)
+   Sort Key: created_at
+   Sort Method: quicksort  Memory: 42kB
+   Buffers: shared hit=6
+   ->  Seq Scan on workout_programs  (cost=0.00..5.00 rows=200 width=63) (actual time=0.006..0.030 rows=200.00 loops=1)
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=130
+ Planning Time: 0.424 ms
+ Execution Time: 0.115 ms

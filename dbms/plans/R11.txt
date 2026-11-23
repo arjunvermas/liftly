@@ -1,0 +1,27 @@
+=== R11 run 1 ===
+Seq Scan on program_days  (cost=0.00..3.85 rows=1 width=6) (actual time=0.006..0.014 rows=1.00 loops=1)
+   Filter: (id = '33333333-3333-3333-3333-333333333333'::uuid)
+   Rows Removed by Filter: 147
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=97
+ Planning Time: 0.534 ms
+ Execution Time: 0.040 ms
+=== R11 run 2 ===
+Seq Scan on program_days  (cost=0.00..3.85 rows=1 width=6) (actual time=0.008..0.018 rows=1.00 loops=1)
+   Filter: (id = '33333333-3333-3333-3333-333333333333'::uuid)
+   Rows Removed by Filter: 147
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=97
+ Planning Time: 0.463 ms
+ Execution Time: 0.048 ms
+=== R11 run 3 ===
+Seq Scan on program_days  (cost=0.00..3.85 rows=1 width=6) (actual time=0.007..0.017 rows=1.00 loops=1)
+   Filter: (id = '33333333-3333-3333-3333-333333333333'::uuid)
+   Rows Removed by Filter: 147
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=97
+ Planning Time: 0.453 ms
+ Execution Time: 0.047 ms

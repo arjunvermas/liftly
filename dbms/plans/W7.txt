@@ -1,0 +1,27 @@
+=== W7 run 1 ===
+Insert on workout_programs  (cost=0.00..0.02 rows=1 width=117) (actual time=0.314..0.315 rows=1.00 loops=1)
+   Buffers: shared hit=77
+   ->  Result  (cost=0.00..0.02 rows=1 width=117) (actual time=0.029..0.029 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=16
+ Planning Time: 0.112 ms
+ Trigger for constraint workout_programs_user_id_fkey: time=0.614 calls=1
+ Execution Time: 0.984 ms
+=== W7 run 2 ===
+Insert on workout_programs  (cost=0.00..0.02 rows=1 width=117) (actual time=0.222..0.223 rows=1.00 loops=1)
+   Buffers: shared hit=77
+   ->  Result  (cost=0.00..0.02 rows=1 width=117) (actual time=0.014..0.014 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=16
+ Planning Time: 0.074 ms
+ Trigger for constraint workout_programs_user_id_fkey: time=0.470 calls=1
+ Execution Time: 0.732 ms
+=== W7 run 3 ===
+Insert on workout_programs  (cost=0.00..0.02 rows=1 width=117) (actual time=0.258..0.259 rows=1.00 loops=1)
+   Buffers: shared hit=77
+   ->  Result  (cost=0.00..0.02 rows=1 width=117) (actual time=0.017..0.017 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=16
+ Planning Time: 0.095 ms
+ Trigger for constraint workout_programs_user_id_fkey: time=0.553 calls=1
+ Execution Time: 0.858 ms

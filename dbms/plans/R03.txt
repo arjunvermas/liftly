@@ -1,0 +1,27 @@
+=== R3 run 1 ===
+Index Scan using profiles_pkey on profiles  (cost=0.28..8.30 rows=1 width=104) (actual time=0.011..0.012 rows=1.00 loops=1)
+   Index Cond: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=79
+ Planning Time: 0.376 ms
+ Execution Time: 0.047 ms
+=== R3 run 2 ===
+Index Scan using profiles_pkey on profiles  (cost=0.28..8.30 rows=1 width=104) (actual time=0.011..0.012 rows=1.00 loops=1)
+   Index Cond: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=79
+ Planning Time: 0.329 ms
+ Execution Time: 0.046 ms
+=== R3 run 3 ===
+Index Scan using profiles_pkey on profiles  (cost=0.28..8.30 rows=1 width=104) (actual time=0.012..0.013 rows=1.00 loops=1)
+   Index Cond: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+   Index Searches: 1
+   Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=79
+ Planning Time: 0.336 ms
+ Execution Time: 0.050 ms

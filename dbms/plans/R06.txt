@@ -1,0 +1,27 @@
+=== R6 run 1 ===
+Index Scan using users_email_key on users  (cost=0.28..8.30 rows=1 width=55) (actual time=0.014..0.015 rows=1.00 loops=1)
+   Index Cond: ((email)::text = 'asha@example.com'::text)
+   Index Searches: 1
+   Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=104
+ Planning Time: 0.379 ms
+ Execution Time: 0.043 ms
+=== R6 run 2 ===
+Index Scan using users_email_key on users  (cost=0.28..8.30 rows=1 width=55) (actual time=0.014..0.015 rows=1.00 loops=1)
+   Index Cond: ((email)::text = 'asha@example.com'::text)
+   Index Searches: 1
+   Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=104
+ Planning Time: 0.389 ms
+ Execution Time: 0.042 ms
+=== R6 run 3 ===
+Index Scan using users_email_key on users  (cost=0.28..8.30 rows=1 width=55) (actual time=0.015..0.015 rows=1.00 loops=1)
+   Index Cond: ((email)::text = 'asha@example.com'::text)
+   Index Searches: 1
+   Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=104
+ Planning Time: 0.413 ms
+ Execution Time: 0.043 ms

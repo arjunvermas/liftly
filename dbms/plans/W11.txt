@@ -1,0 +1,36 @@
+=== W11 run 1 ===
+Insert on user_active_programs  (cost=0.00..0.01 rows=1 width=56) (actual time=0.263..0.264 rows=1.00 loops=1)
+   Conflict Resolution: UPDATE
+   Conflict Arbiter Indexes: user_active_programs_user_id_key
+   Tuples Inserted: 0
+   Conflicting Tuples: 1
+   Buffers: shared hit=33
+   ->  Result  (cost=0.00..0.01 rows=1 width=56) (actual time=0.033..0.034 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=56
+ Planning Time: 0.106 ms
+ Execution Time: 0.379 ms
+=== W11 run 2 ===
+Insert on user_active_programs  (cost=0.00..0.01 rows=1 width=56) (actual time=0.215..0.215 rows=1.00 loops=1)
+   Conflict Resolution: UPDATE
+   Conflict Arbiter Indexes: user_active_programs_user_id_key
+   Tuples Inserted: 0
+   Conflicting Tuples: 1
+   Buffers: shared hit=35
+   ->  Result  (cost=0.00..0.01 rows=1 width=56) (actual time=0.012..0.013 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=56
+ Planning Time: 0.108 ms
+ Execution Time: 0.322 ms
+=== W11 run 3 ===
+Insert on user_active_programs  (cost=0.00..0.01 rows=1 width=56) (actual time=0.212..0.213 rows=1.00 loops=1)
+   Conflict Resolution: UPDATE
+   Conflict Arbiter Indexes: user_active_programs_user_id_key
+   Tuples Inserted: 0
+   Conflicting Tuples: 1
+   Buffers: shared hit=35
+   ->  Result  (cost=0.00..0.01 rows=1 width=56) (actual time=0.014..0.014 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=56
+ Planning Time: 0.109 ms
+ Execution Time: 0.312 ms

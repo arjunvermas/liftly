@@ -1,0 +1,36 @@
+=== W14 run 1 ===
+Delete on workout_logs  (cost=0.28..8.30 rows=0 width=0) (actual time=0.068..0.069 rows=0.00 loops=1)
+   Buffers: shared hit=10
+   ->  Index Scan using workout_logs_pkey on workout_logs  (cost=0.28..8.30 rows=1 width=6) (actual time=0.011..0.019 rows=1.00 loops=1)
+         Index Cond: (id = '44444444-4444-4444-4444-444444444444'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=5
+ Planning:
+   Buffers: shared hit=96
+ Planning Time: 0.361 ms
+ Trigger for constraint workout_sets_workout_log_id_fkey: time=0.386 calls=1
+ Execution Time: 0.543 ms
+=== W14 run 2 ===
+Delete on workout_logs  (cost=0.28..8.30 rows=0 width=0) (actual time=0.063..0.064 rows=0.00 loops=1)
+   Buffers: shared hit=8
+   ->  Index Scan using workout_logs_pkey on workout_logs  (cost=0.28..8.30 rows=1 width=6) (actual time=0.018..0.018 rows=1.00 loops=1)
+         Index Cond: (id = '44444444-4444-4444-4444-444444444444'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=96
+ Planning Time: 0.376 ms
+ Trigger for constraint workout_sets_workout_log_id_fkey: time=0.404 calls=1
+ Execution Time: 0.557 ms
+=== W14 run 3 ===
+Delete on workout_logs  (cost=0.28..8.30 rows=0 width=0) (actual time=0.059..0.060 rows=0.00 loops=1)
+   Buffers: shared hit=8
+   ->  Index Scan using workout_logs_pkey on workout_logs  (cost=0.28..8.30 rows=1 width=6) (actual time=0.018..0.018 rows=1.00 loops=1)
+         Index Cond: (id = '44444444-4444-4444-4444-444444444444'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=96
+ Planning Time: 0.368 ms
+ Trigger for constraint workout_sets_workout_log_id_fkey: time=0.386 calls=1
+ Execution Time: 0.536 ms

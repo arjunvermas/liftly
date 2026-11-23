@@ -1,0 +1,63 @@
+=== R2 run 1 ===
+Limit  (cost=8.58..12.01 rows=1 width=113) (actual time=0.025..0.026 rows=1.00 loops=1)
+   Buffers: shared hit=5
+   ->  Bitmap Heap Scan on users  (cost=8.58..15.45 rows=2 width=113) (actual time=0.025..0.025 rows=1.00 loops=1)
+         Recheck Cond: (((email)::text = 'asha_fit'::text) OR ((username)::text = 'asha_fit'::text))
+         Heap Blocks: exact=1
+         Buffers: shared hit=5
+         ->  BitmapOr  (cost=8.58..8.58 rows=2 width=0) (actual time=0.015..0.015 rows=0.00 loops=1)
+               Buffers: shared hit=4
+               ->  Bitmap Index Scan on users_email_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.010..0.010 rows=0.00 loops=1)
+                     Index Cond: ((email)::text = 'asha_fit'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+               ->  Bitmap Index Scan on users_username_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.004..0.004 rows=1.00 loops=1)
+                     Index Cond: ((username)::text = 'asha_fit'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=102
+ Planning Time: 0.396 ms
+ Execution Time: 0.051 ms
+=== R2 run 2 ===
+Limit  (cost=8.58..12.01 rows=1 width=113) (actual time=0.026..0.027 rows=1.00 loops=1)
+   Buffers: shared hit=5
+   ->  Bitmap Heap Scan on users  (cost=8.58..15.45 rows=2 width=113) (actual time=0.026..0.026 rows=1.00 loops=1)
+         Recheck Cond: (((email)::text = 'asha_fit'::text) OR ((username)::text = 'asha_fit'::text))
+         Heap Blocks: exact=1
+         Buffers: shared hit=5
+         ->  BitmapOr  (cost=8.58..8.58 rows=2 width=0) (actual time=0.017..0.017 rows=0.00 loops=1)
+               Buffers: shared hit=4
+               ->  Bitmap Index Scan on users_email_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.012..0.012 rows=0.00 loops=1)
+                     Index Cond: ((email)::text = 'asha_fit'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+               ->  Bitmap Index Scan on users_username_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.004..0.004 rows=1.00 loops=1)
+                     Index Cond: ((username)::text = 'asha_fit'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=102
+ Planning Time: 0.416 ms
+ Execution Time: 0.054 ms
+=== R2 run 3 ===
+Limit  (cost=8.58..12.01 rows=1 width=113) (actual time=0.024..0.025 rows=1.00 loops=1)
+   Buffers: shared hit=5
+   ->  Bitmap Heap Scan on users  (cost=8.58..15.45 rows=2 width=113) (actual time=0.024..0.024 rows=1.00 loops=1)
+         Recheck Cond: (((email)::text = 'asha_fit'::text) OR ((username)::text = 'asha_fit'::text))
+         Heap Blocks: exact=1
+         Buffers: shared hit=5
+         ->  BitmapOr  (cost=8.58..8.58 rows=2 width=0) (actual time=0.015..0.016 rows=0.00 loops=1)
+               Buffers: shared hit=4
+               ->  Bitmap Index Scan on users_email_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.011..0.011 rows=0.00 loops=1)
+                     Index Cond: ((email)::text = 'asha_fit'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+               ->  Bitmap Index Scan on users_username_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.004..0.004 rows=1.00 loops=1)
+                     Index Cond: ((username)::text = 'asha_fit'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=102
+ Planning Time: 0.428 ms
+ Execution Time: 0.050 ms

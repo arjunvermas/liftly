@@ -1,0 +1,63 @@
+=== R5 run 1 ===
+Limit  (cost=8.58..12.02 rows=1 width=16) (actual time=0.021..0.022 rows=0.00 loops=1)
+   Buffers: shared hit=4
+   ->  Bitmap Heap Scan on users  (cost=8.58..15.46 rows=2 width=16) (actual time=0.020..0.021 rows=0.00 loops=1)
+         Recheck Cond: (((email)::text = 'new@example.com'::text) OR ((username)::text = 'new_name'::text))
+         Filter: (id <> '11111111-1111-1111-1111-111111111111'::uuid)
+         Buffers: shared hit=4
+         ->  BitmapOr  (cost=8.58..8.58 rows=2 width=0) (actual time=0.016..0.016 rows=0.00 loops=1)
+               Buffers: shared hit=4
+               ->  Bitmap Index Scan on users_email_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.011..0.011 rows=0.00 loops=1)
+                     Index Cond: ((email)::text = 'new@example.com'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+               ->  Bitmap Index Scan on users_username_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.004..0.004 rows=0.00 loops=1)
+                     Index Cond: ((username)::text = 'new_name'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=98
+ Planning Time: 0.405 ms
+ Execution Time: 0.048 ms
+=== R5 run 2 ===
+Limit  (cost=8.58..12.02 rows=1 width=16) (actual time=0.030..0.031 rows=0.00 loops=1)
+   Buffers: shared hit=4
+   ->  Bitmap Heap Scan on users  (cost=8.58..15.46 rows=2 width=16) (actual time=0.029..0.029 rows=0.00 loops=1)
+         Recheck Cond: (((email)::text = 'new@example.com'::text) OR ((username)::text = 'new_name'::text))
+         Filter: (id <> '11111111-1111-1111-1111-111111111111'::uuid)
+         Buffers: shared hit=4
+         ->  BitmapOr  (cost=8.58..8.58 rows=2 width=0) (actual time=0.022..0.022 rows=0.00 loops=1)
+               Buffers: shared hit=4
+               ->  Bitmap Index Scan on users_email_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.015..0.015 rows=0.00 loops=1)
+                     Index Cond: ((email)::text = 'new@example.com'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+               ->  Bitmap Index Scan on users_username_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.006..0.006 rows=0.00 loops=1)
+                     Index Cond: ((username)::text = 'new_name'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=98
+ Planning Time: 0.469 ms
+ Execution Time: 0.073 ms
+=== R5 run 3 ===
+Limit  (cost=8.58..12.02 rows=1 width=16) (actual time=0.042..0.043 rows=0.00 loops=1)
+   Buffers: shared hit=4
+   ->  Bitmap Heap Scan on users  (cost=8.58..15.46 rows=2 width=16) (actual time=0.041..0.041 rows=0.00 loops=1)
+         Recheck Cond: (((email)::text = 'new@example.com'::text) OR ((username)::text = 'new_name'::text))
+         Filter: (id <> '11111111-1111-1111-1111-111111111111'::uuid)
+         Buffers: shared hit=4
+         ->  BitmapOr  (cost=8.58..8.58 rows=2 width=0) (actual time=0.033..0.034 rows=0.00 loops=1)
+               Buffers: shared hit=4
+               ->  Bitmap Index Scan on users_email_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.023..0.023 rows=0.00 loops=1)
+                     Index Cond: ((email)::text = 'new@example.com'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+               ->  Bitmap Index Scan on users_username_key  (cost=0.00..4.29 rows=1 width=0) (actual time=0.008..0.008 rows=0.00 loops=1)
+                     Index Cond: ((username)::text = 'new_name'::text)
+                     Index Searches: 1
+                     Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=98
+ Planning Time: 0.502 ms
+ Execution Time: 0.087 ms

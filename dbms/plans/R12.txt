@@ -1,0 +1,36 @@
+=== R12 run 1 ===
+Aggregate  (cost=6.28..6.29 rows=1 width=8) (actual time=0.082..0.082 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Only Scan using idx_workout_logs_user_id on workout_logs  (cost=0.28..6.03 rows=100 width=0) (actual time=0.062..0.075 rows=100.00 loops=1)
+         Index Cond: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+         Heap Fetches: 0
+         Index Searches: 1
+         Buffers: shared hit=4
+ Planning:
+   Buffers: shared hit=126
+ Planning Time: 0.507 ms
+ Execution Time: 0.138 ms
+=== R12 run 2 ===
+Aggregate  (cost=6.28..6.29 rows=1 width=8) (actual time=0.069..0.070 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Only Scan using idx_workout_logs_user_id on workout_logs  (cost=0.28..6.03 rows=100 width=0) (actual time=0.049..0.062 rows=100.00 loops=1)
+         Index Cond: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+         Heap Fetches: 0
+         Index Searches: 1
+         Buffers: shared hit=4
+ Planning:
+   Buffers: shared hit=126
+ Planning Time: 0.452 ms
+ Execution Time: 0.113 ms
+=== R12 run 3 ===
+Aggregate  (cost=6.28..6.29 rows=1 width=8) (actual time=0.076..0.076 rows=1.00 loops=1)
+   Buffers: shared hit=4
+   ->  Index Only Scan using idx_workout_logs_user_id on workout_logs  (cost=0.28..6.03 rows=100 width=0) (actual time=0.054..0.068 rows=100.00 loops=1)
+         Index Cond: (user_id = '11111111-1111-1111-1111-111111111111'::uuid)
+         Heap Fetches: 0
+         Index Searches: 1
+         Buffers: shared hit=4
+ Planning:
+   Buffers: shared hit=126
+ Planning Time: 0.481 ms
+ Execution Time: 0.121 ms

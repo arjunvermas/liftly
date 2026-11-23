@@ -1,0 +1,24 @@
+=== W16 run 1 ===
+Insert on exercises  (cost=0.00..0.02 rows=1 width=224) (actual time=0.477..0.478 rows=1.00 loops=1)
+   Buffers: shared hit=150
+   ->  Result  (cost=0.00..0.02 rows=1 width=224) (actual time=0.017..0.017 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=13
+ Planning Time: 0.095 ms
+ Execution Time: 0.504 ms
+=== W16 run 2 ===
+Insert on exercises  (cost=0.00..0.02 rows=1 width=224) (actual time=0.354..0.355 rows=1.00 loops=1)
+   Buffers: shared hit=145
+   ->  Result  (cost=0.00..0.02 rows=1 width=224) (actual time=0.016..0.016 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=13
+ Planning Time: 0.103 ms
+ Execution Time: 0.382 ms
+=== W16 run 3 ===
+Insert on exercises  (cost=0.00..0.02 rows=1 width=224) (actual time=0.351..0.353 rows=1.00 loops=1)
+   Buffers: shared hit=145
+   ->  Result  (cost=0.00..0.02 rows=1 width=224) (actual time=0.016..0.017 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=13
+ Planning Time: 0.098 ms
+ Execution Time: 0.381 ms

@@ -1,0 +1,27 @@
+=== W3 run 1 ===
+Insert on profiles  (cost=0.00..0.03 rows=1 width=184) (actual time=0.373..0.373 rows=1.00 loops=1)
+   Buffers: shared hit=50
+   ->  Result  (cost=0.00..0.03 rows=1 width=184) (actual time=0.021..0.021 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=12
+ Planning Time: 0.115 ms
+ Trigger for constraint profiles_user_id_fkey: time=0.667 calls=1
+ Execution Time: 1.066 ms
+=== W3 run 2 ===
+Insert on profiles  (cost=0.00..0.03 rows=1 width=184) (actual time=0.692..0.693 rows=1.00 loops=1)
+   Buffers: shared hit=63 dirtied=1 written=1
+   ->  Result  (cost=0.00..0.03 rows=1 width=184) (actual time=0.023..0.023 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=12
+ Planning Time: 0.104 ms
+ Trigger for constraint profiles_user_id_fkey: time=0.628 calls=1
+ Execution Time: 1.346 ms
+=== W3 run 3 ===
+Insert on profiles  (cost=0.00..0.03 rows=1 width=184) (actual time=0.290..0.290 rows=1.00 loops=1)
+   Buffers: shared hit=52
+   ->  Result  (cost=0.00..0.03 rows=1 width=184) (actual time=0.017..0.017 rows=1.00 loops=1)
+ Planning:
+   Buffers: shared hit=12
+ Planning Time: 0.104 ms
+ Trigger for constraint profiles_user_id_fkey: time=0.575 calls=1
+ Execution Time: 0.889 ms

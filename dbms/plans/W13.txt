@@ -1,0 +1,66 @@
+=== W13 run 1 ===
+Hash Join  (cost=0.10..13.67 rows=2 width=251) (actual time=0.334..0.407 rows=2.00 loops=1)
+   Hash Cond: (e.id = i.exercise_id)
+   Buffers: shared hit=79
+   CTE inserted
+     ->  Insert on workout_sets  (cost=0.00..0.04 rows=2 width=106) (actual time=0.297..0.311 rows=2.00 loops=1)
+           Buffers: shared hit=70
+           ->  Values Scan on "*VALUES*"  (cost=0.00..0.04 rows=2 width=106) (actual time=0.021..0.024 rows=2.00 loops=1)
+   ->  Seq Scan on exercises e  (cost=0.00..12.03 rows=303 width=201) (actual time=0.005..0.026 rows=303.00 loops=1)
+         Buffers: shared hit=9
+   ->  Hash  (cost=0.04..0.04 rows=2 width=82) (actual time=0.323..0.323 rows=2.00 loops=1)
+         Buckets: 1024  Batches: 1  Memory Usage: 9kB
+         Buffers: shared hit=70
+         ->  CTE Scan on inserted i  (cost=0.00..0.04 rows=2 width=82) (actual time=0.302..0.318 rows=2.00 loops=1)
+               Storage: Memory  Maximum Storage: 17kB
+               Buffers: shared hit=70
+ Planning:
+   Buffers: shared hit=272
+ Planning Time: 0.775 ms
+ Trigger for constraint workout_sets_workout_log_id_fkey: time=0.396 calls=2
+ Trigger for constraint workout_sets_exercise_id_fkey: time=0.106 calls=2
+ Execution Time: 0.966 ms
+=== W13 run 2 ===
+Hash Join  (cost=0.10..13.67 rows=2 width=251) (actual time=0.269..0.372 rows=2.00 loops=1)
+   Hash Cond: (e.id = i.exercise_id)
+   Buffers: shared hit=78
+   CTE inserted
+     ->  Insert on workout_sets  (cost=0.00..0.04 rows=2 width=106) (actual time=0.233..0.248 rows=2.00 loops=1)
+           Buffers: shared hit=69
+           ->  Values Scan on "*VALUES*"  (cost=0.00..0.04 rows=2 width=106) (actual time=0.022..0.025 rows=2.00 loops=1)
+   ->  Seq Scan on exercises e  (cost=0.00..12.03 rows=303 width=201) (actual time=0.006..0.027 rows=303.00 loops=1)
+         Buffers: shared hit=9
+   ->  Hash  (cost=0.04..0.04 rows=2 width=82) (actual time=0.258..0.258 rows=2.00 loops=1)
+         Buckets: 1024  Batches: 1  Memory Usage: 9kB
+         Buffers: shared hit=69
+         ->  CTE Scan on inserted i  (cost=0.00..0.04 rows=2 width=82) (actual time=0.236..0.252 rows=2.00 loops=1)
+               Storage: Memory  Maximum Storage: 17kB
+               Buffers: shared hit=69
+ Planning:
+   Buffers: shared hit=272
+ Planning Time: 0.840 ms
+ Trigger for constraint workout_sets_workout_log_id_fkey: time=0.410 calls=2
+ Trigger for constraint workout_sets_exercise_id_fkey: time=0.109 calls=2
+ Execution Time: 0.949 ms
+=== W13 run 3 ===
+Hash Join  (cost=0.10..13.67 rows=2 width=251) (actual time=0.273..0.434 rows=2.00 loops=1)
+   Hash Cond: (e.id = i.exercise_id)
+   Buffers: shared hit=78
+   CTE inserted
+     ->  Insert on workout_sets  (cost=0.00..0.04 rows=2 width=106) (actual time=0.235..0.252 rows=2.00 loops=1)
+           Buffers: shared hit=69
+           ->  Values Scan on "*VALUES*"  (cost=0.00..0.04 rows=2 width=106) (actual time=0.018..0.023 rows=2.00 loops=1)
+   ->  Seq Scan on exercises e  (cost=0.00..12.03 rows=303 width=201) (actual time=0.005..0.048 rows=303.00 loops=1)
+         Buffers: shared hit=9
+   ->  Hash  (cost=0.04..0.04 rows=2 width=82) (actual time=0.261..0.262 rows=2.00 loops=1)
+         Buckets: 1024  Batches: 1  Memory Usage: 9kB
+         Buffers: shared hit=69
+         ->  CTE Scan on inserted i  (cost=0.00..0.04 rows=2 width=82) (actual time=0.238..0.256 rows=2.00 loops=1)
+               Storage: Memory  Maximum Storage: 17kB
+               Buffers: shared hit=69
+ Planning:
+   Buffers: shared hit=272
+ Planning Time: 0.962 ms
+ Trigger for constraint workout_sets_workout_log_id_fkey: time=0.584 calls=2
+ Trigger for constraint workout_sets_exercise_id_fkey: time=0.117 calls=2
+ Execution Time: 1.242 ms

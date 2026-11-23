@@ -1,0 +1,60 @@
+=== W4 run 1 ===
+Delete on users  (cost=0.28..8.30 rows=0 width=0) (actual time=0.106..0.106 rows=0.00 loops=1)
+   Buffers: shared hit=15
+   ->  Index Scan using users_pkey on users  (cost=0.28..8.30 rows=1 width=6) (actual time=0.010..0.011 rows=1.00 loops=1)
+         Index Cond: (id = '11111111-1111-1111-1111-111111111111'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=95
+ Planning Time: 0.414 ms
+ Trigger for constraint profiles_user_id_fkey on users: time=0.273 calls=1
+ Trigger for constraint workout_programs_user_id_fkey on users: time=0.412 calls=1
+ Trigger for constraint user_active_programs_user_id_fkey on users: time=0.429 calls=1
+ Trigger for constraint workout_logs_user_id_fkey on users: time=0.432 calls=1
+ Trigger for constraint program_days_program_id_fkey on workout_programs: time=1.155 calls=99
+ Trigger for constraint user_active_programs_program_id_fkey on workout_programs: time=1.082 calls=99
+ Trigger for constraint workout_sets_workout_log_id_fkey on workout_logs: time=0.995 calls=100
+ Trigger for constraint program_day_exercises_program_day_id_fkey on program_days: time=0.791 calls=69
+ Trigger for constraint workout_logs_program_day_id_fkey on program_days: time=0.281 calls=69
+ Execution Time: 6.089 ms
+=== W4 run 2 ===
+Delete on users  (cost=0.28..8.30 rows=0 width=0) (actual time=0.066..0.066 rows=0.00 loops=1)
+   Buffers: shared hit=14
+   ->  Index Scan using users_pkey on users  (cost=0.28..8.30 rows=1 width=6) (actual time=0.014..0.015 rows=1.00 loops=1)
+         Index Cond: (id = '11111111-1111-1111-1111-111111111111'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=95
+ Planning Time: 0.341 ms
+ Trigger for constraint profiles_user_id_fkey on users: time=0.195 calls=1
+ Trigger for constraint workout_programs_user_id_fkey on users: time=0.311 calls=1
+ Trigger for constraint user_active_programs_user_id_fkey on users: time=0.248 calls=1
+ Trigger for constraint workout_logs_user_id_fkey on users: time=0.337 calls=1
+ Trigger for constraint program_days_program_id_fkey on workout_programs: time=1.045 calls=99
+ Trigger for constraint user_active_programs_program_id_fkey on workout_programs: time=1.058 calls=99
+ Trigger for constraint workout_sets_workout_log_id_fkey on workout_logs: time=0.869 calls=100
+ Trigger for constraint program_day_exercises_program_day_id_fkey on program_days: time=0.679 calls=69
+ Trigger for constraint workout_logs_program_day_id_fkey on program_days: time=0.280 calls=69
+ Execution Time: 5.197 ms
+=== W4 run 3 ===
+Delete on users  (cost=0.28..8.30 rows=0 width=0) (actual time=0.067..0.067 rows=0.00 loops=1)
+   Buffers: shared hit=14
+   ->  Index Scan using users_pkey on users  (cost=0.28..8.30 rows=1 width=6) (actual time=0.014..0.014 rows=1.00 loops=1)
+         Index Cond: (id = '11111111-1111-1111-1111-111111111111'::uuid)
+         Index Searches: 1
+         Buffers: shared hit=3
+ Planning:
+   Buffers: shared hit=95
+ Planning Time: 0.345 ms
+ Trigger for constraint profiles_user_id_fkey on users: time=0.196 calls=1
+ Trigger for constraint workout_programs_user_id_fkey on users: time=0.310 calls=1
+ Trigger for constraint user_active_programs_user_id_fkey on users: time=0.261 calls=1
+ Trigger for constraint workout_logs_user_id_fkey on users: time=0.349 calls=1
+ Trigger for constraint program_days_program_id_fkey on workout_programs: time=1.057 calls=99
+ Trigger for constraint user_active_programs_program_id_fkey on workout_programs: time=1.066 calls=99
+ Trigger for constraint workout_sets_workout_log_id_fkey on workout_logs: time=0.873 calls=100
+ Trigger for constraint program_day_exercises_program_day_id_fkey on program_days: time=0.658 calls=69
+ Trigger for constraint workout_logs_program_day_id_fkey on program_days: time=0.274 calls=69
+ Execution Time: 5.222 ms
